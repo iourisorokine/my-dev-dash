@@ -5,9 +5,11 @@ const router = express.Router();
 router.get("/", (req, res, next) => {
   const user = req.user;
   if (user) {
-    res.redirect("/feed");
+    res.redirect("/user/feed");
   }
-  res.render("index");
+  res.render("index", {
+    layout: false
+  });
 });
 
 module.exports = router;

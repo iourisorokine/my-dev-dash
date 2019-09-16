@@ -1,11 +1,9 @@
 body {
   padding: 20px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
-  color: #00b7ff;
-}
+  color: #00B7FF; }
 
 .user-header {
   height: 100px;
@@ -13,8 +11,7 @@ a {
   background-color: #174b5e;
   display: flex;
   justify-content: space-between;
-  color: white;
-}
+  color: white; }
 
 .news-container {
   display: flex;

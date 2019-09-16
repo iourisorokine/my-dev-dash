@@ -15,9 +15,11 @@ const requestUrl = `https://newsapi.org/v2/everything?q=${interestsStr}&language
 
 
 router.get('/feed', (req, res, next) => {
+  let newsList;
   axios.get(requestUrl)
     .then(response => {
-      const newsList = response.data.articles;
+      newsList = response.data.articles; 
+      // newsList = [...news,...newsList]
       console.log(interestsStr);
       res.render('user/feed', {
         newsList
