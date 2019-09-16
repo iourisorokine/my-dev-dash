@@ -10,7 +10,6 @@ const level = document.querySelector("#level");
 
 // const notNovice = document.querySelectorAll(".not-novice");
 let notNovice = document.querySelector(".not-novice");
-console.log(notNovice);
 level.onchange = () => {
   if (level.value === "novice") {
     notNovice.innerHTML = "";

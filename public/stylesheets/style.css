@@ -1,11 +1,9 @@
 body {
   padding: 20px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
-  color: #00b7ff;
-}
+  color: #00B7FF; }
 
 .user-header {
   height: 100px;
@@ -13,30 +11,25 @@ a {
   background-color: #174b5e;
   display: flex;
   justify-content: space-between;
-  color: white;
-}
+  color: white; }
 
 .news-container {
   display: flex;
   max-width: 800px;
   padding: 10px;
   margin: 10px auto;
-  background-color: #e5e5e5;
-}
+  background-color: #e5e5e5; }
 
 .news-container-left {
-  flex: 5;
-}
+  flex: 5; }
 
 .news-container-right {
   padding: 10px;
-  flex: 2;
-}
+  flex: 2; }
 
 .news-container-right img {
   width: 150px;
-  height: auto;
-}
+  height: auto; }
 
 .pin-this {
   background-color: #d5d5d5;
@@ -44,7 +37,6 @@ a {
   width: 50px;
   height: 50px;
   color: white;
-  margin: 10px;
-}
+  margin: 10px; }
 
 /*# sourceMappingURL=style.css.map */
