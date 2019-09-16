@@ -3,20 +3,37 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    name: String,
-    password: String,
-    email: String,
-    city: String,
+    name: {
+      type: String,
+      required: true
+    },
+    password: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true
+    },
+    city: {
+      type: String,
+      required: true
+    },
     level: {
       type: String,
-      enum: ["novice", "beginner", "intermediate", "advanced", "senior"]
+      enum: ["novice", "beginner", "intermediate", "advanced", "senior"],
+      required: true,
     },
     mentorship: {
       type: String,
-      enum: ["Yes", "No"]
+      enum: ["Yes", "No"],
+
     },
     connections: Array,
-    interests: Array,
+    interests: {
+      type: Array,
+      required: true,
+    }
     pinnedContent: Array,
     githubLink: String
   },
