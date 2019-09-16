@@ -48,54 +48,51 @@ router.post("/signup", (req, res, next) => {
     password
   );
   // const password = req.body.password;
-<<<<<<< HEAD
   if (email === "" || password === "" || mentorship.length === 0) {
     res.render("auth/signup", { message: "Indicate email and password" });
-=======
-  if (email === "" || password === "") {
-    res.render("auth/signup", {
-      message: "Indicate email and password"
-    });
->>>>>>> f1d2b99f2957a2e1aea8a59580eda590e2c57863
     return;
   }
 
-  User.findOne({
-    email
-  }, "email", (err, user) => {
-    if (user !== null) {
-      res.render("auth/signup", {
-        message: "The email already exists"
-      });
-      return;
-    }
-
-    const salt = bcrypt.genSaltSync(bcryptSalt);
-    const hashPass = bcrypt.hashSync(password, salt);
-
-    const newUser = new User({
-      name,
-      email,
-      password: hashPass,
-      city,
-      level,
-      mentorship,
-      interests,
-      github
-    });
-
-    newUser
-      .save()
-      .then(() => {
-        res.redirect("/");
-      })
-      .catch(err => {
-        console.log(err);
+  User.findOne(
+    {
+      email
+    },
+    "email",
+    (err, user) => {
+      if (user !== null) {
         res.render("auth/signup", {
-          message: "Something went wrong"
+          message: "The email already exists"
         });
+        return;
+      }
+
+      const salt = bcrypt.genSaltSync(bcryptSalt);
+      const hashPass = bcrypt.hashSync(password, salt);
+
+      const newUser = new User({
+        name,
+        email,
+        password: hashPass,
+        city,
+        level,
+        mentorship,
+        interests,
+        github
       });
-  });
+
+      newUser
+        .save()
+        .then(() => {
+          res.redirect("/");
+        })
+        .catch(err => {
+          console.log(err);
+          res.render("auth/signup", {
+            message: "Something went wrong"
+          });
+        });
+    }
+  );
 });
 
 router.get("/logout", (req, res) => {
