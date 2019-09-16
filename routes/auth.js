@@ -48,15 +48,8 @@ router.post("/signup", (req, res, next) => {
     password
   );
   // const password = req.body.password;
-<<<<<<< HEAD
   if (email === "" || password === "" || mentorship.length === 0) {
     res.render("auth/signup", { message: "Indicate email and password" });
-=======
-  if (email === "" || password === "") {
-    res.render("auth/signup", {
-      message: "Indicate email and password"
-    });
->>>>>>> f1d2b99f2957a2e1aea8a59580eda590e2c57863
     return;
   }
 

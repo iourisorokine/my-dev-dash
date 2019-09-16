@@ -11,7 +11,6 @@ let interestsStr = interests.reduce((acc, val, index) => {
 }, "");
 const requestUrl = `https://newsapi.org/v2/everything?q=${interestsStr}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY}`;
 
-<<<<<<< HEAD
 router.get("/feed", (req, res, next) => {
   axios.get(requestUrl).then(response => {
     const newsList = response.data.articles;
@@ -21,20 +20,6 @@ router.get("/feed", (req, res, next) => {
       user: req.user
     });
   });
-=======
-
-router.get('/feed', (req, res, next) => {
-  let newsList;
-  axios.get(requestUrl)
-    .then(response => {
-      newsList = response.data.articles; 
-      // newsList = [...news,...newsList]
-      console.log(interestsStr);
-      res.render('user/feed', {
-        newsList
-      });
-    })
->>>>>>> f1d2b99f2957a2e1aea8a59580eda590e2c57863
 });
 
 router.get("/pinned", (req, res, next) => {
