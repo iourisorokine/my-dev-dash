@@ -25,10 +25,25 @@ a {
 }
 
 .news-container-left {
-  flex: 4;
+  flex: 5;
 }
 
 .news-container-right {
   padding: 10px;
+  flex: 2;
+  // display: flex;
+}
+
+.news-container-right img {
+  width: 150px;
+  height: auto;
+}
+
+.pin-this {
+  background-color: #d5d5d5;
   flex: 1;
+  width: 50px;
+  height: 50px;
+  color: white;
+  margin: 10px;
 }
