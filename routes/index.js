@@ -5,7 +5,9 @@ const router = express.Router();
 router.get("/", (req, res, next) => {
   const user = req.user;
   if (user) {
-    res.redirect("/user/feed");
+    res.redirect("/user/feed", {
+      user: user
+    });
   }
   res.render("index", {
     layout: false
