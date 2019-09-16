@@ -8,7 +8,10 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 router.get("/login", (req, res, next) => {
-  res.render("auth/login", { message: req.flash("error") });
+  res.render("auth/login", {
+    message: req.flash("error"),
+    layout: false
+  });
 });
 
 router.post(
@@ -22,7 +25,9 @@ router.post(
 );
 
 router.get("/signup", (req, res, next) => {
-  res.render("auth/signup");
+  res.render("auth/signup", {
+    layout: false
+  });
 });
 
 router.post("/signup", (req, res, next) => {
@@ -43,14 +48,25 @@ router.post("/signup", (req, res, next) => {
     password
   );
   // const password = req.body.password;
+<<<<<<< HEAD
   if (email === "" || password === "" || mentorship.length === 0) {
     res.render("auth/signup", { message: "Indicate email and password" });
+=======
+  if (email === "" || password === "") {
+    res.render("auth/signup", {
+      message: "Indicate email and password"
+    });
+>>>>>>> f1d2b99f2957a2e1aea8a59580eda590e2c57863
     return;
   }
 
-  User.findOne({ email }, "email", (err, user) => {
+  User.findOne({
+    email
+  }, "email", (err, user) => {
     if (user !== null) {
-      res.render("auth/signup", { message: "The email already exists" });
+      res.render("auth/signup", {
+        message: "The email already exists"
+      });
       return;
     }
 
@@ -75,7 +91,9 @@ router.post("/signup", (req, res, next) => {
       })
       .catch(err => {
         console.log(err);
-        res.render("auth/signup", { message: "Something went wrong" });
+        res.render("auth/signup", {
+          message: "Something went wrong"
+        });
       });
   });
 });
