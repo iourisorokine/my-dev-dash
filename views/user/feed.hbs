@@ -1,1 +1,15 @@
 <h1>Here goes the user feed</h1>
+{{#each newsList}}
+<div class="news-container">
+  <div class="news-container-left">
+    <a href="{{url}}">
+      <h3>{{title}}</h3>
+    </a>
+    <h4>{{source.name}} - {{publishedAt}}</h4>
+    <p>{{content}}</p>
+  </div>
+  <div class="news-container-right">
+    <img src="{{urlToImage}}" width="150px" alt="illustration">
+  </div>
+</div>
+{{/each}}

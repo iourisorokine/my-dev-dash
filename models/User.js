@@ -25,7 +25,7 @@ const userSchema = new Schema({
   },
   mentorship: {
     type: String,
-    enum: ["Yes", "No"],
+    enum: ["yes", "no"],
 
   },
   connections: Array,

@@ -15,3 +15,20 @@ a {
   justify-content: space-between;
   color: white;
 }
+
+.news-container {
+  display: flex;
+  max-width: 800px;
+  padding: 10px;
+  margin: 10px auto;
+  background-color: #e5e5e5;
+}
+
+.news-container-left {
+  flex: 4;
+}
+
+.news-container-right {
+  padding: 10px;
+  flex: 1;
+}
