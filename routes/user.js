@@ -17,6 +17,7 @@ checkContentId = (item, array) => {
 router.get('/feed', (req, res, next) => {
 
   newsList = [];
+  let eventsList = [];
   const interests = req.user.interests;
   let todaysDate = new Date();
   let todaysDateStr = `${todaysDate.getFullYear()}-${todaysDate.getMonth()+1}-${todaysDate.getDate()}T17%3A56%3A53Z`;
@@ -33,38 +34,43 @@ router.get('/feed', (req, res, next) => {
 
   axios.get(eventsCall)
     .then(response => {
-      const eventsList = response.data.events;
+      const eventsResp = response.data.events;
       for (let i = 0; i < 5; i++) {
         let eToPush = {};
         eToPush.source = {
           name: 'Event'
         }
-        eToPush.title = eventsList[i].name.text;
-        eToPush.description = eventsList[i].description.text;
-        eToPush.url = eventsList[i].url;
-        eToPush.urlToImage = eventsList[i].logo.url;
-        eToPush.publishedAt = eventsList[i].published;
-        eToPush.contentId = `${eventsList[i].name.text}${eventsList[i].published}`
-        newsList.push(eToPush);
+        eToPush.title = eventsResp[i].name.text;
+        eToPush.description = eventsResp[i].description.text;
+        eToPush.url = eventsResp[i].url;
+        eToPush.urlToImage = eventsResp[i].logo.url;
+        eToPush.publishedAt = eventsResp[i].published;
+        eToPush.contentId = `${eventsResp[i].name.text}${eventsResp[i].published}`
+        eventsList.push(eToPush);
       }
-    })
-    .then(
       Promise.all([...promises])
-      .then(responses => {
-        responses.forEach(response => newsList = response.data.articles.concat(newsList));
-        newsList.forEach(item => {
-          item.contentId = `${item.title}${item.publishedAt}`
-          if (checkContentId(item, req.user.pinnedContent)) item.pinned = true;
-        })
-        res.render('user/feed', {
+        .then(responses => {
+          responses.forEach(response => newsList = newsList.concat(response.data.articles));
+          let counter = 0;
+          newsList.forEach((item, index) => {
+            if (index % 5 === 0 && counter < 5) {
+              newsList.splice(index, 0, eventsList[counter]);
+              counter++
+            }
+          })
+          newsList.forEach(item => {
+            item.contentId = `${item.title}${item.publishedAt}`
+            if (checkContentId(item, req.user.pinnedContent)) item.pinned = true;
+          })
+          res.render('user/feed', {
             newsList,
             user: req.user
           })
-          .catch(err => {
-            console.log(err)
-          })
-      })
-    )
+
+        }).catch(err => {
+          console.log(err)
+        })
+    })
 });
 
 // pin content - not working
