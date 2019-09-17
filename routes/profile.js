@@ -23,12 +23,12 @@ router.post("/edit", (req, res, next) => {
   // const description = req.body.description;
   // const author = req.body.author;
   // const rating = req.body.rating;
-
+  const mentorship = req.body.mentorship || "no";
   const user = req.user._id;
 
   User.findByIdAndUpdate(
     { _id: user },
-    { email, city, level, github, interests }
+    { email, city, level, github, interests, mentorship }
   )
     .then(user => {
       //   res.redirect('/books')

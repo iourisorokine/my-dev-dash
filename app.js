@@ -96,4 +96,7 @@ app.use("/user", userRoutes);
 const profileRoutes = require("./routes/profile");
 app.use("/profile", profileRoutes);
 
+const connectionRoutes = require("./routes/connections");
+app.use("/connections", connectionRoutes);
+
 module.exports = app;

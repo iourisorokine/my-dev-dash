@@ -18,7 +18,8 @@ const storage = cloudinaryStorage({
       height: 150,
       crop: "thumb",
       gravity: "face",
-      radius: "max"
+      // radius: "max",
+      background: "rgb:174b5e" // need to figure out if there's a way to add multiple formats. otherwise this wont work
     }
   ],
   // params: { resource_type: 'raw' }, => this is in case you want to upload other type of files, not just images
