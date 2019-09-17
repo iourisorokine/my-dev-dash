@@ -10,10 +10,14 @@
   <div class="news-container-right">
     <img src="{{urlToImage}}" alt="illustration">
   </div>
+  {{#if pinned}}
+  <form action="/user/remove/{{@index}}" method="POST">
+    <button type="submit">Remove item {{@index}}</button>
+  </form>
+  {{else}}
   <form action="/user/pin/{{@index}}" method="POST">
     <button type="submit">Pin item {{@index}}</button>
   </form>
-
-
+  {{/if}}
 </div>
 {{/each}}
