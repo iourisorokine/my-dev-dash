@@ -29,33 +29,29 @@ router.get('/feed', (req, res, next) => {
 
   const eventsCall = `https://www.eventbriteapi.com/v3/events/search/?q=react&location.within=10km&location.latitude=52.52437&location.longitude=13.41053&start_date.range_start=${todaysDateStr}&start_date.range_end=2019-10-31T17%3A56%3A53Z&token=${process.env.EVENTBRITE_API_TOKEN}`;
 
-  // no work => `https://www.eventbriteapi.com/v3/events/search/?q=react&location.within=10km&location.latitude=52.52437&location.longitude=13.41053&start_date.range_start=${todaysDate}&token=${process.env.EVENTBRITE_API_TOKEN}`
-  // hardcoded - works => 'https://www.eventbriteapi.com/v3/events/search/?q=react&location.within=10km&location.latitude=52.52437&location.longitude=13.41053&start_date.range_start=2019-09-10T17%3A56%3A53Z&start_date.range_end=2019-09-30T17%3A56%3A53Z&token=K3OSVKUDH4ZV35GNGLE4'
-  //`https://www.eventbriteapi.com/v3/events/search/?q=${interests[0]}&location.address=${req.user.city}&location.within=10km&location.latitude=14.58333&location.longitude=121&start_date.range_start=${todaysDate}&token=${process.env.EVENTBRITE_API_KEY}`
-
   let promises = Object.values(requests).map(val => axios.get(val));
 
-  console.log('News list length: ', newsList.length)
   axios.get(eventsCall)
     .then(response => {
       const eventsList = response.data.events;
-      eventsList.forEach((event, index) => {
-        if (index < 5) {
-          let eToPush = {}
-          eToPush.title = event.name.text;
-          eToPush.description = event.description.text;
-          eToPush.url = event.url;
-          eToPush.urlToImage = event.logo.url;
-          eToPush.publishedAt = event.published;
-          newsList.push(eToPush);
+      for (let i = 0; i < 5; i++) {
+        let eToPush = {};
+        eToPush.source = {
+          name: 'Event'
         }
-      })
-      console.log('News list length: ', newsList)
+        eToPush.title = eventsList[i].name.text;
+        eToPush.description = eventsList[i].description.text;
+        eToPush.url = eventsList[i].url;
+        eToPush.urlToImage = eventsList[i].logo.url;
+        eToPush.publishedAt = eventsList[i].published;
+        eToPush.contentId = `${eventsList[i].name.text}${eventsList[i].published}`
+        newsList.push(eToPush);
+      }
     })
     .then(
       Promise.all([...promises])
       .then(responses => {
-        responses.forEach(response => newsList = newsList.concat(response.data.articles));
+        responses.forEach(response => newsList = response.data.articles.concat(newsList));
         newsList.forEach(item => {
           item.contentId = `${item.title}${item.publishedAt}`
           if (checkContentId(item, req.user.pinnedContent)) item.pinned = true;
