@@ -4,12 +4,11 @@ const User = require("../models/User");
 const cron = require("cron");
 
 router.get("/", (req, res, next) => {
-  User.find().then(userDB => {
-    res.render("connections/connection-page", {
-      userList: userDB,
-      user: req.user
-    });
-    // res.render("books", { booksList: books });
+  const connections = req.user.connections;
+  console.log(connections);
+  res.render("connections/connection-page", {
+    connections,
+    user: req.user
   });
 });
 
@@ -27,10 +26,15 @@ router.get("/:userId", (req, res) => {
 // const job = cron.job("* * * * *", () => console.log("Message every minute"));
 // job.start();
 
-// checkConnections = () => {
-//   User.find().then(user => {
-//     res.render("books", { booksList: books });
-//   });
-// };
+checkConnections = () => {
+  // User.find().then(usersDb => {
+  //   const newArray = usersDb.slice()
+  //   const {connections} = req.user
+  //   newArray.forEach(el => {
+  //     if(connections.includes(el._id)) return;
+  //     else
+  //   })
+  // });
+};
 
 module.exports = router;
