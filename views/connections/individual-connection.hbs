@@ -1,0 +1,16 @@
+{{#with user}}
+<h1>Hey {{name}}!</h1>
+<p>Like we do every week, we would love to introduce you to someone that we believe you can certainly learn a lot from
+  and with.</p>
+{{/with}}
+{{#with indiUser}}
+<h3>{{name}}</h3>
+{{#if imagePath}}
+<img src="{{imagePath}}" alt="">
+{{/if}}
+<h3>email: {{email}}</h3>
+<h3>City: {{city}}</h3>
+<p>Programming level: {{level}}</p>
+<p>Interests: {{#each interests}}|{{this}}|{{/each}}</p>
+<p>Are you open to connect to other users and be/get a mentor:{{mentorship}}</p>
+{{/with}}

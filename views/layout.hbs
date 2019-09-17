@@ -19,8 +19,12 @@
       <a href="/">Home</a>
       <a href="/user/pinned">Pinned</a>
       <a href="/profile">Profile</a>
+      <a href="/connections">My connections</a>
       <a href="/auth/logout">Logout</a>
-
+      {{#if imagePath}}
+      <img src="{{imagePath}}" alt="">
+      {{else}}
+      {{/if}}
       {{!-- {{/if}} --}}
     </nav>
     {{/with}}
