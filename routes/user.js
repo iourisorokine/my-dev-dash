@@ -4,6 +4,7 @@ const axios = require("axios");
 const User = require('../models/User');
 
 let newsList = [];
+
 checkContentId = (item, array) => {
   let idPresent = false
   array.forEach(arrayItem => {
@@ -14,26 +15,29 @@ checkContentId = (item, array) => {
 
 // manages the nees feed from the news API
 router.get('/feed', (req, res, next) => {
-  const interests = req.user.interests;
 
+  newslist = [];
+  const interests = req.user.interests;
   let todaysDate = new Date();
-  let interestsStr = interests.reduce((acc, val, index) => {
-    if (index < interests.length - 1) return acc + val + '+';
-    return acc + val;
-  }, "")
-  const newsReqCombined = `https://newsapi.org/v2/everything?q=${interestsStr}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY}`;
-  // const eventbriteCombined = `https://www.eventbriteapi.com/v3/events/search/?token=${process.env.EVENTBRITE_API_KEY}&q=${interestsStr}`;
+  let allInterestsStr = interests.join('+')
+  const requests = {};
+  requests.newsCombined = `https://newsapi.org/v2/everything?q=${allInterestsStr}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY}`;
+  interests.forEach((interest, index) => {
+    requests[`news${index+1}`] = `https://newsapi.org/v2/everything?q=${interest}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY}`;
+  })
+
+  // const eventbriteCombined = `https://www.eventbriteapi.com/v3/events/search/?token=${process.env.EVENTBRITE_API_KEY}&q=${}`;
   // https://www.eventbriteapi.com/v3/events/search/?q=react&location.address=${req.user.city}&location.within=60km&location.latitude=14.58333&location.longitude=121&start_date.range_start=${todaysDate}&token=${process.env.EVENTBRITE_API_KEY}
 
-  axios.get(newsReqCombined)
-    .then(response => {
-      newsList = response.data.articles
+  let promises = Object.values(requests).map(val => axios.get(val));
+
+  Promise.all([...promises])
+    .then(responses => {
+      responses.forEach(response => newsList = newsList.concat(response.data.articles));
       newsList.forEach(item => {
         item.contentId = `${item.title}${item.publishedAt}`
         if (checkContentId(item, req.user.pinnedContent)) item.pinned = true;
       })
-      console.log(newsList);
-      // newsList = [...news,...newsList]
       res.render('user/feed', {
         newsList,
         user: req.user
@@ -94,11 +98,5 @@ router.post("/pinned/remove/:itemNb", (req, res, next) => {
       next(err)
     })
 })
-
-router.get("/profile", (req, res, next) => {
-  res.render("user/profile", {
-    user: req.user
-  });
-});
 
 module.exports = router;
