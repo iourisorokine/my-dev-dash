@@ -33,9 +33,16 @@ router.get("/signup", (req, res, next) => {
 router.post("/signup", (req, res, next) => {
   // console.log(req.body.mento);
   // const email = req.body.email;
-  const { name, email, city, level, github, password } = req.body;
+  const {
+    name,
+    email,
+    city,
+    level,
+    github,
+    password
+  } = req.body;
   // console.log(Array.from(interests));
-  const interests = Array.from(req.body.interests);
+  const interests = req.body.interests;
   const mentorship = req.body.mentorship || "no";
   console.log(
     name,
@@ -49,7 +56,9 @@ router.post("/signup", (req, res, next) => {
   );
   // const password = req.body.password;
   if (email === "" || password === "" || mentorship.length === 0) {
-    res.render("auth/signup", { message: "Indicate email and password" });
+    res.render("auth/signup", {
+      message: "Indicate email and password"
+    });
     return;
   }
 

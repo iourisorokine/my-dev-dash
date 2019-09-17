@@ -10,6 +10,10 @@
   <div class="news-container-right">
     <img src="{{urlToImage}}" alt="illustration">
   </div>
-  <div class="pin-this">Pin this</div>
+  <form action="/user/pin/{{@index}}" method="POST">
+    <button type="submit">Pin item {{@index}}</button>
+  </form>
+
+
 </div>
 {{/each}}
