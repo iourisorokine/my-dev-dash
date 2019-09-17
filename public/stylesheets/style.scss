@@ -1,37 +1,113 @@
 body {
-  padding: 20px;
+  padding: 0;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
 }
 
 a {
   color: #00B7FF;
 }
 
+h2 {
+  padding: 30px 0;
+}
+
 .user-header {
-  height: 100px;
-  padding: 20px;
+  // position: fixed;
+  // top: 0px;
+  height: 80px;
+  padding: 0 50px;
   background-color: #174b5e;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  color: white;
+  box-shadow: 4px 4px 2px rgba(23, 75, 94, 0.3);
+}
+
+/* 
+Login & signup page styles
+*/
+.homepage-wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../images/cover-landing-1.jpeg');
+  background-size: cover;
+}
+
+.homepage-center {
+  color: black;
+  text-align: center;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 8px 8px rgba(255, 255, 255, 0.4);
+}
+
+.signup-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.homepage-wrapper h1 {
+  font-size: 4rem;
+}
+
+.auth-button {
+  margin: 10px;
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.7);
+  border: 1px solid black;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+.auth-button:hover {
+  background-color: black;
   color: white;
 }
 
+.account-message {
+  padding-top: 50px;
+}
+
+/* 
+newsfeed styles
+*/
+
 .news-container {
   display: flex;
+  align-items: center;
   max-width: 800px;
   padding: 10px;
   margin: 10px auto;
-  background-color: #e5e5e5;
+  background-color: white;
+  border: 1px solid #174b5e;
+  box-shadow: 4px 4px 2px rgba(23, 75, 94, 0.3);
 }
 
 .news-container-left {
   flex: 5;
+  text-decoration: none;
+  color: black;
+}
+
+
+
+.news-container-left:hover {
+  transition: ease;
+  transition-duration: 0.5s;
+  background-color: rgba(23, 75, 94, 0.2);
 }
 
 .news-container-right {
   padding: 10px;
   flex: 2;
-  // display: flex;
 }
 
 .news-container-right img {
@@ -39,11 +115,20 @@ a {
   height: auto;
 }
 
-.pin-this {
-  background-color: #d5d5d5;
+.btn-pin {
   flex: 1;
-  width: 50px;
-  height: 50px;
-  color: white;
+  width: 70px;
+  height: 70px;
+  color: #174b5e;
   margin: 10px;
+  border: 1px solid #174b5e;
+  box-shadow: 4px 4px 2px rgba(23, 75, 94, 0.3);
+}
+
+.btn-pin:hover {
+  transition: ease;
+  transition-duration: 0.5s;
+  transform: scale(0.9);
+  color: white;
+  background-color: #174b5e;
 }

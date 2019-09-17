@@ -80,8 +80,8 @@ router.post("/pin/:itemNb", (req, res, next) => {
   const currentContent = req.user.pinnedContent;
   currentContent.push(newPinnedItem);
   User.findByIdAndUpdate(req.user._id, {
-    pinnedContent: currentContent
-  })
+      pinnedContent: currentContent
+    })
     .then(found => {
       res.redirect("/user/feed");
     })
@@ -97,8 +97,8 @@ router.post("/remove/:itemNb", (req, res, next) => {
     item => item.contentId !== itemToRemove.contentId
   );
   User.findByIdAndUpdate(req.user._id, {
-    pinnedContent: currentContent
-  })
+      pinnedContent: currentContent
+    })
     .then(found => {
       res.redirect("/user/feed");
     })
@@ -119,8 +119,8 @@ router.post("/pinned/remove/:itemNb", (req, res, next) => {
   let currentContent = req.user.pinnedContent;
   currentContent.splice(req.params.itemNb, 1);
   User.findByIdAndUpdate(req.user._id, {
-    pinnedContent: currentContent
-  })
+      pinnedContent: currentContent
+    })
     .then(found => {
       res.redirect("/user/pinned");
     })

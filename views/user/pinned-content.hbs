@@ -1,17 +1,15 @@
 {{#each pinnedContent}}
 <div class="news-container">
-  <div class="news-container-left">
-    <a href="{{url}}">
-      <h3>{{title}}</h3>
-    </a>
+  <a href="{{url}}" class="news-container-left">
+    <h3>{{title}}</h3>
     <h4>{{source.name}} - {{publishedAt}}</h4>
     <p>{{content}}</p>
-  </div>
+  </a>
   <div class="news-container-right">
     <img src="{{urlToImage}}" alt="illustration">
   </div>
   <form action="/user/pinned/remove/{{@index}}" method="POST">
-    <button type="submit">Remove item {{@index}}</button>
+    <button class="btn-pin" type="submit">Remove item</button>
   </form>
 </div>
 {{/each}}
