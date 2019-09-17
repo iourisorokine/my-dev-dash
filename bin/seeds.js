@@ -10,55 +10,59 @@ const User = require("../models/User");
 const bcryptSalt = 10;
 
 mongoose
-  .connect('mongodb://localhost/my-dev-dash', {
+  .connect("mongodb://localhost/my-dev-dash", {
     useNewUrlParser: true
   })
   .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
   })
   .catch(err => {
-    console.error('Error connecting to mongo', err)
+    console.error("Error connecting to mongo", err);
   });
 
-let users = [{
+let users = [
+  {
     username: "alice",
-    password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
+    password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt))
   },
   {
     username: "bob",
-    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
+    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt))
   }
-]
+];
 
-const testUsers = [{
-    name: 'John Doe',
-    password: 'test1234',
-    email: 'john@doe.com',
-    city: 'Berlin',
-    level: 'intermediate',
-    mentorship: 'yes',
+const testUsers = [
+  {
+    name: "John Doe",
+    password: "test1234",
+    email: "john@doe.com",
+    city: "Berlin",
+    level: "intermediate",
+    mentorship: "yes",
     connections: [],
-    interests: ['react', 'javascript'],
+    interests: ["react", "javascript"],
     pinnedContent: [],
-    githubLink: ''
+    github: ""
   },
   {
-    name: 'Jane Doe',
-    password: 'test1234',
-    email: 'jane@doe.com',
-    city: 'Berlin',
-    level: 'advanced',
-    mentorship: 'yes',
+    name: "Jane Doe",
+    password: "test1234",
+    email: "jane@doe.com",
+    city: "Berlin",
+    level: "advanced",
+    mentorship: "yes",
     connections: [],
-    interests: ['ruby', 'javascript'],
+    interests: ["ruby", "javascript"],
     pinnedContent: [],
-    githubLink: ''
+    github: ""
   }
-]
+];
 
 User.deleteMany()
   .then(() => {
-    return User.create(testUsers)
+    return User.create(testUsers);
   })
   .then(usersCreated => {
     console.log(`${usersCreated.length} users created with the following id:`);
@@ -66,9 +70,9 @@ User.deleteMany()
   })
   .then(() => {
     // Close properly the connection to Mongoose
-    mongoose.disconnect()
+    mongoose.disconnect();
   })
   .catch(err => {
-    mongoose.disconnect()
-    throw err
-  })
+    mongoose.disconnect();
+    throw err;
+  });

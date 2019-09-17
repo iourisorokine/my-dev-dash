@@ -1,9 +1,16 @@
 <h1>Profile</h1>
 {{#with user}}
+{{#if imagePath}}
+<img src="{{imagePath}}" alt="">
+<p><a href="/profile/upload">Edit you profile pic</a></p>
+{{else}}
+<p><a href="/profile/upload">Add a profile Pic</a></p>
+{{/if}}
 <h2>name: {{name}}</h2>
 <h3>email: {{email}}</h3>
 <h3>City: {{city}}</h3>
 <p>Programming level: {{level}}</p>
 <p>Interests: {{#each interests}}|{{this}}|{{/each}}</p>
 <p>Are you open to connect to other users and be/get a mentor:{{mentorship}}</p>
+<p><a href="/profile/edit"> Edit your profile</a></p>
 {{/with}}

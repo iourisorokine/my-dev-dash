@@ -33,26 +33,19 @@ router.get("/signup", (req, res, next) => {
 router.post("/signup", (req, res, next) => {
   // console.log(req.body.mento);
   // const email = req.body.email;
-  const {
-    name,
-    email,
-    city,
-    level,
-    github,
-    password
-  } = req.body;
+  const { name, email, city, level, github, password, interests } = req.body;
   // console.log(Array.from(interests));
-  const interests = req.body.interests;
+  // const interests = req.body.interests;
   const mentorship = req.body.mentorship || "no";
   console.log(
-    name,
-    email,
-    city,
-    level,
-    mentorship,
-    interests,
-    github,
-    password
+    // name,
+    // email,
+    // city,
+    // level,
+    // mentorship,
+    interests
+    // github,
+    // password
   );
   // const password = req.body.password;
   if (email === "" || password === "" || mentorship.length === 0) {
@@ -91,8 +84,13 @@ router.post("/signup", (req, res, next) => {
 
       newUser
         .save()
-        .then(() => {
-          res.redirect("/");
+        .then(user => {
+          req.login(user, function(err) {
+            if (err) {
+              return next(err);
+            }
+            return res.redirect("/");
+          });
         })
         .catch(err => {
           console.log(err);
