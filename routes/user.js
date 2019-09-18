@@ -27,15 +27,14 @@ router.get('/feed', (req, res, next) => {
   interests.forEach((interest, index) => {
     requests[`news${index+1}`] = `https://newsapi.org/v2/everything?q=${interest}&language=en&from=${todaysDate.toDateString()}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY}`;
   })
-
-  const eventsCall = `https://www.eventbriteapi.com/v3/events/search/?q=react&location.within=10km&location.latitude=52.52437&location.longitude=13.41053&start_date.range_start=${todaysDateStr}&start_date.range_end=2019-10-31T17%3A56%3A53Z&token=${process.env.EVENTBRITE_API_TOKEN}`;
+  const eventsCall = `https://www.eventbriteapi.com/v3/events/search/?q=interests[0]&location.address=${req.user.city}&location.within=30km&start_date.range_start=${todaysDateStr}&start_date.range_end=2020-01-31T17%3A56%3A53Z&token=${process.env.EVENTBRITE_API_TOKEN}`;
 
   let promises = Object.values(requests).map(val => axios.get(val));
 
   axios.get(eventsCall)
     .then(response => {
       const eventsResp = response.data.events;
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 8; i++) {
         let eToPush = {};
         eToPush.source = {
           name: 'Event'
