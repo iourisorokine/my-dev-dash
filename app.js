@@ -14,7 +14,7 @@ const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
 
 mongoose
-  .connect("mongodb://localhost/my-dev-dash", {
+  .connect(process.env.MONGO_URI || "mongodb://localhost/my-dev-dash", {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -78,7 +78,9 @@ app.use(
     secret: "irongenerator",
     resave: true,
     saveUninitialized: true,
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection
+    })
   })
 );
 app.use(flash());
