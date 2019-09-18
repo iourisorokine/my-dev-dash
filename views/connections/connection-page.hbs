@@ -2,3 +2,9 @@
 {{#each connections}}
 <p><a href="/connections/{{_id}}">{{name}}</a> </p>
 {{/each}}
+<h3>No connections yet?</h3>
+<form action="/connections/add" method="post">
+  {{#if message}}
+  {{message}}
+  {{/if}}
+  <button type="submit">Add a connection</button></form>
