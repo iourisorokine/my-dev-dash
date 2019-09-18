@@ -24,6 +24,9 @@ h2 {
   color: #174b5e;
   box-shadow: 4px 4px 2px rgba(23, 75, 94, 0.3); }
 
+.signup-top {
+  display: flex; }
+
 .profile-pic {
   width: 80px;
   height: auto;

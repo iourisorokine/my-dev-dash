@@ -25,12 +25,12 @@ router.post(
 );
 
 // Github authentification routes
-router.get('/github', passport.authenticate('github'));
+router.get("/github", passport.authenticate("github"));
 
 router.get(
   "/github/callback",
   passport.authenticate("github", {
-    successRedirect: "/profile",
+    successRedirect: "/signup/advanced",
     failureRedirect: "/auth/login"
   })
 );
@@ -47,34 +47,26 @@ router.post("/signup", (req, res, next) => {
   const {
     name,
     email,
-    city,
-    level,
-    github,
-    password,
-    interests
+    // city,
+    // level,
+    // github,
+    password
+    // interests
   } = req.body;
   // console.log(Array.from(interests));
   // const interests = req.body.interests;
-  const mentorship = req.body.mentorship || "no";
-  console.log(
-    // name,
-    // email,
-    // city,
-    // level,
-    // mentorship,
-    interests
-    // github,
-    // password
-  );
+  // const mentorship = req.body.mentorship || "no";
+
   // const password = req.body.password;
-  if (email === "" || password === "" || mentorship.length === 0) {
+  if (email === "" || password === "" || name.length === 0) {
     res.render("auth/signup", {
-      message: "Indicate email and password"
+      message: "Please fill out the form"
     });
     return;
   }
 
-  User.findOne({
+  User.findOne(
+    {
       email
     },
     "email",
@@ -92,22 +84,22 @@ router.post("/signup", (req, res, next) => {
       const newUser = new User({
         name,
         email,
-        password: hashPass,
-        city,
-        level,
-        mentorship,
-        interests,
-        github
+        password: hashPass
+        // city,
+        // level,
+        // mentorship,
+        // interests,
+        // github
       });
 
       newUser
         .save()
         .then(user => {
-          req.login(user, function (err) {
+          req.login(user, function(err) {
             if (err) {
               return next(err);
             }
-            return res.redirect("/");
+            return res.redirect("/signup/advanced");
           });
         })
         .catch(err => {

@@ -15,8 +15,9 @@
   <h3>email: {{email}}</h3>
   <h3>City: {{city}}</h3>
   <p>Programming level: {{level}}</p>
-  <p>Interests: {{#each interests}}|{{this}}|{{/each}}</p>
+  <p>Interests: {{#each interests}}{{this}}{{/each}}</p>
   <p>Are you open to connect to other users and be/get a mentor:{{mentorship}}</p>
+  <p>Github: {{githubUrl}}</p>
   <p><a class="style-button" href="/profile/edit"> Edit your profile</a></p>
   {{/with}}
 </div>
