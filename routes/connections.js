@@ -72,8 +72,8 @@ const checkConnections = async (user, flash) => {
   if (String(user._id) === String(randomUser._id))
     return "try again in an hour";
 
-  console.log(user.connections.map(el => el._id));
-  console.log(String(randomUser._id));
+  // console.log(user.connections.map(el => el._id));
+  // console.log(String(randomUser._id));
   const connectionsId = user.connections.some(el => {
     el._id.equals(randomUser._id) || user._id.equals(randomUser._id);
   });
