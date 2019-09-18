@@ -6,7 +6,7 @@ const cron = require("cron");
 router.get("/", (req, res, next) => {
   const connections = req.user.connections;
   // checkConnections();
-  // console.log("test: ", checkConnections(req.user));
+  console.log("test: ", checkConnections(req.user));
   console.log(connections);
   res.render("connections/connection-page", {
     connections,
