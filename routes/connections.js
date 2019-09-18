@@ -5,11 +5,7 @@ const cron = require("cron");
 
 router.get("/", async (req, res, next) => {
   const connections = req.user.connections;
-  // const user = await checkConnections(req.user);
-  // console.log("After function is called in the get:::", req.user.connections);
-  // console.log("test: ", checkConnections(req.user));
-  // console.log(connections);
-  // console.log("hey hey hey: ", req.user);
+
   res.render("connections/connection-page", {
     connections,
     user: req.user,
