@@ -1,24 +1,23 @@
-{{#each newsList}}
-
-<div class="news-container">
-  <a href="{{url}}" target="blank" class="news-container-left">
-    {{!-- <a href="{{url}}"> --}}
-    <h3>{{title}}</h3>
-    {{!-- </a> --}}
-    <h4>{{source.name}} - {{publishedAt}}</h4>
-    <p>{{content}}</p>
-  </a>
-  <div class="news-container-right">
-    <img src="{{urlToImage}}" alt="illustration">
+<div class="page-wrapper">
+  {{#each newsList}}
+  <div class="news-container">
+    <a href="{{url}}" target="blank" class="news-container-left">
+      <h3>{{title}}</h3>
+      <h4>{{source.name}} - {{publishedAt}}</h4>
+      <p>{{content}}</p>
+    </a>
+    <div class="news-container-right">
+      <img src="{{urlToImage}}" alt="illustration">
+    </div>
+    {{#if pinned}}
+    <form action="/user/remove/{{@index}}" method="POST">
+      <button class="btn-pin" type="submit">Remove this</button>
+    </form>
+    {{else}}
+    <form action="/user/pin/{{@index}}" method="POST">
+      <button class="btn-pin" type="submit">Pin this</button>
+    </form>
+    {{/if}}
   </div>
-  {{#if pinned}}
-  <form action="/user/remove/{{@index}}" method="POST">
-    <button class="btn-pin" type="submit">Remove this</button>
-  </form>
-  {{else}}
-  <form action="/user/pin/{{@index}}" method="POST">
-    <button class="btn-pin" type="submit">Pin this</button>
-  </form>
-  {{/if}}
+  {{/each}}
 </div>
-{{/each}}

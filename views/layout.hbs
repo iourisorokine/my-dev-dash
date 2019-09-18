@@ -7,24 +7,25 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <header class="user-header">
     {{#with user}}
+    {{#if imagePath}}
+    <img class="profile-pic" src="{{imagePath}}" alt="">
+    {{else}}
+    {{/if}}
     <div>
-      <p>Welcome, {{name}}!</p>
+      <p class="nav-welcome">Welcome, {{name}}!</p>
     </div>
     <nav>
-      <a href="/">Home</a>
-      <a href="/user/pinned">Pinned</a>
-      <a href="/profile">Profile</a>
-      <a href="/connections">My connections</a>
-      <a href="/auth/logout">Logout</a>
-      {{#if imagePath}}
-      <img src="{{imagePath}}" alt="">
-      {{else}}
-      {{/if}}
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/user/pinned">Pinned</a>
+      <a class="nav-link" href="/profile">Profile</a>
+      <a class="nav-link" href="/connections">Connections</a>
+      <a class="nav-link" href="/auth/logout">Logout</a>
       {{!-- {{/if}} --}}
     </nav>
     {{/with}}

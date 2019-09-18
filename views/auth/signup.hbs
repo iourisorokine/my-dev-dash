@@ -1,9 +1,16 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link rel="stylesheet" href="/stylesheets/style.css" />
-
-<h2>Signup</h2>
-
+<div class="signup-top">
+  <h2>Signup</h2>
+  <p>or</p>
+  <a class="style-button" href="/auth/github">
+    <i class="fa fa-github" aria-hidden="true"></i>
+    Signup via Github
+  </a>
+</div>
 <form action="/auth/signup" method="POST" id="form-container">
   <label for="name">Name</label>
   <input id="name" type="text" name="name" placeholder="Your name here...">
@@ -13,11 +20,6 @@
   <label for="email">E-mail</label>
   <input id="email" type="email" name="email" placeholder="Your email..." required>
 
-  <br><br>
-  <a class="auth-button" href="/auth/github">
-    <i class="fa fa-github" aria-hidden="true"></i>
-    Login via Github
-  </a>
   <br><br>
 
   <label for="city">City</label>
