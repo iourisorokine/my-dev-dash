@@ -18,7 +18,7 @@ router.get("/edit", (req, res, next) => {
 });
 
 router.post("/edit", (req, res, next) => {
-  const { email, city, level, github, interests } = req.body;
+  const { email, city, level, githubUrl, interests } = req.body;
   // const title = req.body.title;
   // const description = req.body.description;
   // const author = req.body.author;
@@ -28,7 +28,7 @@ router.post("/edit", (req, res, next) => {
 
   User.findByIdAndUpdate(
     { _id: user },
-    { email, city, level, github, interests, mentorship }
+    { email, city, level, githubUrl, interests, mentorship }
   )
     .then(user => {
       //   res.redirect('/books')

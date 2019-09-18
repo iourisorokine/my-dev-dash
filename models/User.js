@@ -10,13 +10,13 @@ const userSchema = new Schema(
     password: String,
     email: String,
     city: {
-      type: String,
-      required: true
+      type: String
+      // required: true
     },
     level: {
       type: String,
-      enum: ["novice", "beginner", "intermediate", "advanced", "senior"],
-      required: true
+      enum: ["novice", "beginner", "intermediate", "advanced", "senior"]
+      // required: true
     },
     mentorship: {
       type: String,
@@ -24,8 +24,8 @@ const userSchema = new Schema(
     },
     connections: Array,
     interests: {
-      type: [String],
-      required: true
+      type: [String]
+      // required: true
     },
     pinnedContent: Array,
     githubUrl: String,

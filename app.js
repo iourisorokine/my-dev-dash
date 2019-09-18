@@ -70,7 +70,8 @@ hbs.registerHelper("ifUndefined", (value, options) => {
 });
 
 // default value for title local
-app.locals.title = "Express - Generated with IronGenerator";
+app.locals.title =
+  "My Dev Dash - Your Personal Dashboard for all things personal development";
 
 // Enable authentication using session + passport
 app.use(
@@ -101,4 +102,11 @@ app.use("/profile", profileRoutes);
 const connectionRoutes = require("./routes/connections");
 app.use("/connections", connectionRoutes);
 
+<<<<<<< HEAD
 module.exports = app;
+=======
+const signupRoutes = require("./routes/signup");
+app.use("/signup", signupRoutes);
+
+module.exports = app;
+>>>>>>> signup-process
