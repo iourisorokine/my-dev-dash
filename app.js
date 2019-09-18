@@ -102,11 +102,7 @@ app.use("/profile", profileRoutes);
 const connectionRoutes = require("./routes/connections");
 app.use("/connections", connectionRoutes);
 
-<<<<<<< HEAD
-module.exports = app;
-=======
 const signupRoutes = require("./routes/signup");
 app.use("/signup", signupRoutes);
 
 module.exports = app;
->>>>>>> signup-process
