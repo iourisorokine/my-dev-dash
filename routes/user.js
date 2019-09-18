@@ -101,7 +101,7 @@ router.post("/pin/:itemNb", (req, res, next) => {
       pinnedContent: currentContent
     })
     .then(found => {
-      res.redirect("/user/feed");
+      // res.redirect("/user/feed");
     })
     .catch(err => {
       next(err);
@@ -118,7 +118,7 @@ router.post("/remove/:itemNb", (req, res, next) => {
       pinnedContent: currentContent
     })
     .then(found => {
-      res.redirect("/user/feed");
+      // res.redirect("/user/feed");
     })
     .catch(err => {
       next(err);

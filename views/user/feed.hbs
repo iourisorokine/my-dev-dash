@@ -10,14 +10,11 @@
       <img src="{{urlToImage}}" alt="illustration">
     </div>
     {{#if pinned}}
-    <form action="/user/remove/{{@index}}" method="POST">
-      <button class="btn-pin" type="submit">Remove this</button>
-    </form>
+    <button class="btn-pin" onclick="removeElement(event, {{@index}})">Remove this</button>
     {{else}}
-    <form action="/user/pin/{{@index}}" method="POST">
-      <button class="btn-pin" type="submit">Pin this</button>
-    </form>
+    <button class="btn-pin" onclick="pinElement(event, {{@index}})">Pin this</button>
     {{/if}}
   </div>
   {{/each}}
 </div>
+<script src="/javascripts/feed.js"></script>
