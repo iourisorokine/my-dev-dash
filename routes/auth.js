@@ -24,6 +24,17 @@ router.post(
   })
 );
 
+// Github authentification routes
+router.get('/github', passport.authenticate('github'));
+
+router.get(
+  "/github/callback",
+  passport.authenticate("github", {
+    successRedirect: "/profile/edit",
+    failureRedirect: "/auth/login"
+  })
+);
+
 router.get("/signup", (req, res, next) => {
   res.render("auth/signup", {
     layout: false
@@ -33,7 +44,15 @@ router.get("/signup", (req, res, next) => {
 router.post("/signup", (req, res, next) => {
   // console.log(req.body.mento);
   // const email = req.body.email;
-  const { name, email, city, level, github, password, interests } = req.body;
+  const {
+    name,
+    email,
+    city,
+    level,
+    github,
+    password,
+    interests
+  } = req.body;
   // console.log(Array.from(interests));
   // const interests = req.body.interests;
   const mentorship = req.body.mentorship || "no";
@@ -55,8 +74,7 @@ router.post("/signup", (req, res, next) => {
     return;
   }
 
-  User.findOne(
-    {
+  User.findOne({
       email
     },
     "email",
@@ -85,7 +103,7 @@ router.post("/signup", (req, res, next) => {
       newUser
         .save()
         .then(user => {
-          req.login(user, function(err) {
+          req.login(user, function (err) {
             if (err) {
               return next(err);
             }
