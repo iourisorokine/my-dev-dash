@@ -9,7 +9,7 @@ passport.use(
   new GithubStrategy({
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/auth/github/callback"
+      callbackURL: "https://fresh-mentor.herokuapp.com/auth/github/callback"
     },
     (accessToken, refreshToken, profile, done) => {
       // find a user with profile.id as githubId or create one
