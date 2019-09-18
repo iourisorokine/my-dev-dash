@@ -13,11 +13,12 @@ h2 {
 .user-header {
   height: 80px;
   padding: 0 50px;
-  background-color: #174b5e;
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  border: 1px solid #174b5e;
+  color: #174b5e;
   box-shadow: 4px 4px 2px rgba(23, 75, 94, 0.3); }
 
 /* 
@@ -68,6 +69,7 @@ newsfeed styles
 */
 .news-container {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   max-width: 800px;
   padding: 10px;
@@ -78,6 +80,7 @@ newsfeed styles
 
 .news-container-left {
   flex: 5;
+  min-width: 300px;
   text-decoration: none;
   color: black; }
 

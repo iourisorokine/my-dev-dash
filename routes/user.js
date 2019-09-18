@@ -45,6 +45,7 @@ router.get('/feed', (req, res, next) => {
         eToPush.url = eventsResp[i].url;
         eToPush.urlToImage = eventsResp[i].logo.url;
         eToPush.publishedAt = eventsResp[i].published;
+        eToPush.source.event = true;
         eToPush.contentId = `${eventsResp[i].name.text}${eventsResp[i].published}`
         eventsList.push(eToPush);
       }
