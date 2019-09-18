@@ -69,15 +69,18 @@ const checkConnections = async (user, flash) => {
   const randomUser = random[0];
   // console.log("User Level", randomUser.name);
   // console.log("Random User", randomUser.level, randomUser.name);
+  if (String(user._id) === String(randomUser._id))
+    return "try again in an hour";
 
   console.log(user.connections.map(el => el._id));
   console.log(String(randomUser._id));
-  const connectionsId = user.connections.some(el =>
-    el._id.equals(randomUser._id)
-  );
+  const connectionsId = user.connections.some(el => {
+    el._id.equals(randomUser._id) || user._id.equals(randomUser._id);
+  });
 
   user.connections.forEach(el => {
-    if (el._id.equals(randomUser._id)) {
+    if (el._id.equals(randomUser._id) || user._id.equals(randomUser._id)) {
+      console.log("Something", user._id);
       console.log("found");
     } else {
       console.log("Not found");
