@@ -3,15 +3,25 @@ const router = express.Router();
 const User = require("../models/User");
 const cron = require("cron");
 
-router.get("/", (req, res, next) => {
+router.get("/", async (req, res, next) => {
   const connections = req.user.connections;
-  // checkConnections();
-  console.log("test: ", checkConnections(req.user));
-  console.log(connections);
+  // const user = await checkConnections(req.user);
+  // console.log("After function is called in the get:::", req.user.connections);
+  // console.log("test: ", checkConnections(req.user));
+  // console.log(connections);
+  // console.log("hey hey hey: ", req.user);
   res.render("connections/connection-page", {
     connections,
-    user: req.user
+    user: req.user,
+    message: req.flash("message")
   });
+});
+
+router.post("/add", async (req, res, next) => {
+  const connections = req.user.connections;
+  const message = await checkConnections(req.user);
+  req.flash("message", message);
+  res.redirect("/connections");
 });
 
 router.get("/:userId", (req, res) => {
@@ -27,7 +37,7 @@ router.get("/:userId", (req, res) => {
 // const job = cron.job("* * * * *", () => console.log("Message every minute"));
 // job.start();
 
-/* const checkConnections = async user => {
+const checkConnections = async (user, flash) => {
   // const random = await User.aggregate([{ $sample: { size: 1 } }]);
   const allLevels = [
     "novice",
@@ -37,54 +47,66 @@ router.get("/:userId", (req, res) => {
     "senior"
   ];
   const levelArr = allLevels.indexOf(user.level);
-  console.log(levelArr);
-  const random = await User.aggregate([
-    {
-      $match: {
-        $and: [{ city: `${user.city}` }],
-        $or: [
-          { level: `${allLevels[levelArr]}` },
-          { level: `${allLevels[levelArr - 1]}` },
-          { level: `${allLevels[levelArr + 1]}` }
-        ]
-      }
-    },
-    { $sample: { size: 1 } }
+  // console.log(levelArr);
+  const query = {
+    $match: {
+      $and: [{ city: `${user.city}` }],
+      $or: [
+        { level: `${allLevels[levelArr]}` },
+        { level: `${allLevels[levelArr - 1]}` },
+        { level: `${allLevels[levelArr + 1]}` }
+      ]
+    }
+  };
+  const count = await User.aggregate([
+    query,
+    { $count: "matching_level_connections" }
   ]);
+  console.log(count[0].matching_level_connections);
+  console.log(user.connections.length);
+  if (count[0].matching_level_connections === user.connections.length) {
+    return "try again next week";
+  }
 
-  // User.aggregate([
-  //   { $match: { city: "paris" } },
-  //   { $sample: { size: 1 } }
-  // ], function (err, docs) {
-  //   console.log(docs);
-  // });
+  const random = await User.aggregate([query, { $sample: { size: 1 } }]);
 
   const randomUser = random[0];
-  console.log("User Level", user.level);
-  console.log("Random User", randomUser.level, randomUser.name);
+  // console.log("User Level", randomUser.name);
+  // console.log("Random User", randomUser.level, randomUser.name);
 
-  const connectionsId = user.connections.some(id => {
-    if (id.name === randomUser.name) {
-      return true;
+  console.log(user.connections.map(el => el._id));
+  console.log(String(randomUser._id));
+  const connectionsId = user.connections.some(el =>
+    el._id.equals(randomUser._id)
+  );
+
+  user.connections.forEach(el => {
+    if (el._id.equals(randomUser._id)) {
+      console.log("found");
+    } else {
+      console.log("Not found");
     }
   });
 
-  const sameCity = user.connections.some(id => {
-    if (id.city === randomUser.city) {
-      return true;
-    }
-  });
-
-  const sameLevel = user.connections.some(id => {
-    if (id.level === randomUser.level) {
-      return true;
-    }
-  });
-
-  // const userCity =
-  if (!connectionsId || !sameCity || !sameLevel) console.log("Not good enough");
-  else console.log("Maybe get connected");
-  console.log(randomUser.city);
-}; */
+  console.log(connectionsId);
+  // while (!connectionsId)
+  if (!connectionsId) {
+    const updatedRandom = await User.findByIdAndUpdate(randomUser._id, {
+      $addToSet: { connections: `${user._id}` }
+    });
+    const updatedUser = await User.findByIdAndUpdate(
+      user._id,
+      {
+        $addToSet: { connections: `${randomUser._id}` }
+      },
+      { new: true }
+    );
+    return;
+    // console.log("addedagaaaaain");
+  } else {
+    console.log("Not happening");
+    await checkConnections(user);
+  }
+};
 
 module.exports = router;
