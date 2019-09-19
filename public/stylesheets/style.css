@@ -19,8 +19,10 @@ h2 {
   max-width: 80rem;
   margin: 0 auto; }
 
+/* sticky position not working */
 .user-header {
   position: sticky;
+  top: 0;
   height: 10rem;
   padding: 0 5rem;
   background-color: white;
@@ -51,6 +53,9 @@ nav {
   font-family: "Russo One", sans-serif;
   text-decoration: none;
   font-size: 2rem; }
+
+.header-welcome {
+  padding: 1rem 2rem 0 2rem; }
 
 .navbar ul {
   background-color: white;
