@@ -1,3 +1,13 @@
+@media (max-width: 350px) {
+  .user-header {
+    padding-left: 0;
+  }
+
+  .header-welcome {
+    display: none;
+  }
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -21,7 +31,12 @@ h2 {
   padding: 2rem 0;
 }
 
+h3 {
+  font-size: 2.2rem;
+}
+
 .page-wrapper {
+  min-height: 75vh;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -222,15 +237,13 @@ newsfeed styles
 .connection-card {
   display: flex;
   justify-content: space-between;
-  // border: 0.3rem solid red;
-  width: 30vw;
-  height: 18vh;
-  // width: 50rem;
-  // height: 15em;
+  max-width: 50rem;
+  padding: 2rem;
 }
 
 .connection-photo {
-  height: 18vh;
+  width: 15rem;
+  height: auto;
   // width: 25%;
 }
 
@@ -340,6 +353,11 @@ newsfeed styles
   // height: 80vh;
 }
 
+.upload-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .profile {
   display: flex;
   flex-direction: column;
@@ -384,10 +402,26 @@ newsfeed styles
   // margin-bottom: 15rem;
   display: inline-block;
   // width: 20rem;
+  text-align: center;
   padding: 1rem 2rem;
   margin: 5rem;
 }
 
 .text-center {
   text-align: center;
+}
+
+footer {
+  box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5);
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: auto;
+}
+
+.footer-content p {
+  color: #999;
+  line-height: 1rem;
+  font-size: 1rem;
 }

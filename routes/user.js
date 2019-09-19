@@ -160,7 +160,8 @@ const formatTheEvent = rawEventData => {
   eToPush.description = rawEventData.description.text;
   eToPush.url = rawEventData.url;
   eToPush.urlToImage = (rawEventData.logo) ? rawEventData.logo.url : '/images/default-news-pic.jpeg';
-  eToPush.publishedAt = rawEventData.published;
+  eToPush.content = `${rawEventData.summary.slice(0,200)} ...(see more)`,
+    eToPush.publishedAt = rawEventData.start.local;
   eToPush.source.event = true;
   eToPush.contentId = `${rawEventData.name.text}${rawEventData.published}`
 
