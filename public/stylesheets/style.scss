@@ -68,7 +68,7 @@ Login & signup page styles
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('../images/cover-landing-2.jpeg');
+  background-image: url("../images/cover-landing-2.jpeg");
   background-size: cover;
 }
 
@@ -245,4 +245,18 @@ newsfeed styles
 
 .form-element {
   padding: 1em 0;
+}
+
+.username {
+  text-transform: capitalize;
+}
+
+.shame-div {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }

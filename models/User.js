@@ -18,10 +18,6 @@ const userSchema = new Schema(
       enum: ["novice", "beginner", "intermediate", "advanced", "senior"]
       // required: true
     },
-    mentorship: {
-      type: String,
-      enum: ["yes", "no"]
-    },
     connections: Array,
     interests: {
       type: [String]

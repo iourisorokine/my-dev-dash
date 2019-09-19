@@ -74,7 +74,6 @@ const checkConnections = async (user, flash) => {
     return "We seem to be getting a huge influx of sign ups. Could you try again in an hour?";
   }
 
-  if (equality && !countMatch) await checkConnections(user);
   console.log("EQUALITY", equality);
   console.log("NOT COUNT MATCH", !countMatch);
 
