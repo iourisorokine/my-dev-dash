@@ -17,7 +17,7 @@ router.get("/edit", (req, res, next) => {
   });
 });
 
-router.post("/edit", (req, res, next) => {
+router.post("/edit", uploadCloud.single("imagePath"), (req, res, next) => {
   const { email, level, githubUrl, bio } = req.body;
   // const title = req.body.title;
   // const description = req.body.description;
@@ -25,12 +25,22 @@ router.post("/edit", (req, res, next) => {
   // const rating = req.body.rating;
   // const mentorship = req.body.mentorship || "no";
   const city = req.body.city.toLowerCase();
+  const image = req.user.imagePath;
   const interests = req.body.interests || "javascript";
   const user = req.user._id;
+  let imagePath;
+  console.log("first: ", req.file.url);
+  if (req.file) {
+    imagePath = req.file.url;
+  } else {
+    imagePath = image;
+  }
+  // const imagePath = () => (req.file.url ? req.file.url : image);
+  console.log(req.file);
 
   User.findByIdAndUpdate(
     { _id: user },
-    { email, city, level, githubUrl, interests, bio }
+    { email, city, level, githubUrl, interests, bio, imagePath }
   )
     .then(user => {
       //   res.redirect('/books')

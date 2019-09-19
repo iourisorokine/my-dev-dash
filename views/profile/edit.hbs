@@ -1,6 +1,6 @@
 <div class="page-wrapper">
   {{#with user}}
-  <form action="/profile/edit" method="post">
+  <form action="/profile/edit" method="post" enctype="multipart/form-data">
     <label for="email">Email: </label>
     <input type="text" name="email" id="email" value="{{email}}">
     <br><br>
@@ -49,7 +49,7 @@
     <label for="bio">Enter your bio</label>
     <textarea name="bio" id="bio" cols="30" rows="5" value="{{bio}}"></textarea>
 
-
+    <input type='file' name='imagePath' />
     <br><br>
 
     <button class="style-button" type="submit">Update</button>
