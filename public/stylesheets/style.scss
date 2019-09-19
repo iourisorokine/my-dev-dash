@@ -22,6 +22,7 @@ h2 {
 }
 
 .page-wrapper {
+  min-height: 75vh;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -300,4 +301,19 @@ newsfeed styles
   margin: 0 auto;
   display: flex;
   justify-content: center;
+}
+
+footer {
+  box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5);
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: auto;
+}
+
+.footer-content p {
+  color: #999;
+  line-height: 1rem;
+  font-size: 1rem;
 }

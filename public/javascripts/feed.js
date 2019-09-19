@@ -23,5 +23,6 @@ const sourceSlots = document.querySelectorAll('.news-source');
 newsSlots.forEach((news, index) => {
   if (sourceSlots[index].innerText === 'Event') {
     news.style.backgroundColor = '#d0f0ff';
+    sourceSlots[index].style.color = 'red';
   }
 })
