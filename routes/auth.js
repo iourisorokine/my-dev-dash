@@ -30,7 +30,7 @@ router.get("/github", passport.authenticate("github"));
 router.get(
   "/github/callback",
   passport.authenticate("github", {
-    successRedirect: "/signup/advanced",
+    successRedirect: "/user/feed",
     failureRedirect: "/auth/login"
   })
 );

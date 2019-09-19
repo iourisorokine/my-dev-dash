@@ -31,7 +31,6 @@ h2 {
   background-color: white;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   color: #174b5e;
   box-shadow: 0.4rem 0.4rem 0.2rem rgba(23, 75, 94, 0.3);
 }
@@ -69,7 +68,7 @@ Login & signup page styles
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../images/cover-landing-1.jpeg");
+  background-image: url('../images/cover-landing-2.jpeg');
   background-size: cover;
 }
 
@@ -120,6 +119,7 @@ newsfeed styles
   align-items: center;
   padding: 1rem;
   background-color: white;
+  box-shadow: 4px 4px 2px rgba(23, 75, 94, 0.3);
 }
 
 .news-container-left {
