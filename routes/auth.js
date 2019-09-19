@@ -30,7 +30,7 @@ router.get('/github', passport.authenticate('github'));
 router.get(
   "/github/callback",
   passport.authenticate("github", {
-    successRedirect: "/profile",
+    successRedirect: "/user/feed",
     failureRedirect: "/auth/login"
   })
 );
@@ -54,18 +54,7 @@ router.post("/signup", (req, res, next) => {
     interests
   } = req.body;
   // console.log(Array.from(interests));
-  // const interests = req.body.interests;
   const mentorship = req.body.mentorship || "no";
-  console.log(
-    // name,
-    // email,
-    // city,
-    // level,
-    // mentorship,
-    interests
-    // github,
-    // password
-  );
   // const password = req.body.password;
   if (email === "" || password === "" || mentorship.length === 0) {
     res.render("auth/signup", {

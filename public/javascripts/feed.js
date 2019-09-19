@@ -17,3 +17,11 @@ const removeElement = (e, index) => {
     index
   });
 }
+
+const newsSlots = document.querySelectorAll('.news-container');
+const sourceSlots = document.querySelectorAll('.news-source');
+newsSlots.forEach((news, index) => {
+  if (sourceSlots[index].innerText === 'Event') {
+    news.style.backgroundColor = '#d0f0ff';
+  }
+})

@@ -1,7 +1,7 @@
 body {
   padding: 0;
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;
   box-sizing: border-box;
 }
 
@@ -19,12 +19,13 @@ h2 {
 }
 
 .user-header {
+  position: sticky;
+  top: 0;
   height: 100px;
   padding: 0 50px;
   background-color: white;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   color: #174b5e;
   box-shadow: 4px 4px 2px rgba(23, 75, 94, 0.3);
 }
@@ -62,7 +63,7 @@ Login & signup page styles
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('../images/cover-landing-1.jpeg');
+  background-image: url('../images/cover-landing-2.jpeg');
   background-size: cover;
 }
 
@@ -113,7 +114,6 @@ newsfeed styles
   padding: 10px;
   margin: 10px auto;
   background-color: white;
-  border: 1px solid #174b5e;
   box-shadow: 4px 4px 2px rgba(23, 75, 94, 0.3);
 }
 
@@ -126,7 +126,7 @@ newsfeed styles
 
 
 
-.news-container-left:hover {
+.news-container-left:hover>.news-container {
   transition: ease;
   transition-duration: 0.5s;
   background-color: rgba(23, 75, 94, 0.2);
@@ -143,9 +143,9 @@ newsfeed styles
 }
 
 .btn-pin {
-  flex: 1;
   width: 70px;
   height: 70px;
+  font-size: 0.8rem;
   color: #174b5e;
   margin: 10px;
   border: 1px solid #174b5e;

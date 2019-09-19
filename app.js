@@ -14,7 +14,7 @@ const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
 
 mongoose
-  .connect(process.env.MONGO_URI || "mongodb://localhost/my-dev-dash", {
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/my-dev-dash", {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -70,7 +70,7 @@ hbs.registerHelper("ifUndefined", (value, options) => {
 });
 
 // default value for title local
-app.locals.title = "Express - Generated with IronGenerator";
+app.locals.title = "Fresh Mentor";
 
 // Enable authentication using session + passport
 app.use(
