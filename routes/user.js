@@ -36,21 +36,21 @@ router.get('/feed', checkInterests(), (req, res, next) => {
   let allInterestsStr = interests.join('+')
   const newsSources = 'google-news,ars-technica,techcrunch,techradar,wired,bbc-news,engadget';
   const requests = {};
-  requests.newsCombined = `https://newsapi.org/v2/everything?q=${allInterestsStr}&sources=${newsSources}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY2}`;
-  //`https://newsapi.org/v2/everything?q=${allInterestsStr}&sources=${newsSources}&language=en&from=${todaysDate.toDateString()}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY}`;
+  requests.newsCombined = `https://newsapi.org/v2/everything?q=${allInterestsStr}&sources=${newsSources}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY}`;
+
   if (interests.length > 1) {
     interests.forEach((interest, index) => {
-      requests[`news${index+1}`] = `https://newsapi.org/v2/everything?q=${interest}&sources=${newsSources}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY2}`;
+      requests[`news${index+1}`] = `https://newsapi.org/v2/everything?q=${interest}&sources=${newsSources}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY}`;
     })
   }
-  const eventsCall = `https://www.eventbriteapi.com/v3/events/search/?q=interests[0]&location.address=${req.user.city}&location.within=30km&start_date.range_start=${todaysDateStr}&start_date.range_end=2020-01-31T17%3A56%3A53Z&token=${process.env.EVENTBRITE_API_TOKEN}`;
+  const eventsCall = `https://www.eventbriteapi.com/v3/events/search/?q=${interests[0]}&location.address=${req.user.city}&location.within=30km&start_date.range_start=${todaysDateStr}&start_date.range_end=2020-01-31T17%3A56%3A53Z&token=${process.env.EVENTBRITE_API_TOKEN}`
 
   let promises = Object.values(requests).map(val => axios.get(val));
 
   axios.get(eventsCall)
     .then(response => {
       const eventsResp = response.data.events;
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < eventsResp.length; i++) {
         let eToPush = {};
         eToPush.source = {
           name: 'Event'
@@ -58,7 +58,8 @@ router.get('/feed', checkInterests(), (req, res, next) => {
         eToPush.title = eventsResp[i].name.text;
         eToPush.description = eventsResp[i].description.text;
         eToPush.url = eventsResp[i].url;
-        eToPush.urlToImage = eventsResp[i].logo.url;
+        // console.log(eventsResp[i].logo);
+        eToPush.urlToImage = (eventsResp[i].logo) ? eventsResp[i].logo.url : '/images/default-news-pic.jpeg';
         eToPush.publishedAt = eventsResp[i].published;
         eToPush.source.event = true;
         eToPush.contentId = `${eventsResp[i].name.text}${eventsResp[i].published}`
