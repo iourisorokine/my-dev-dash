@@ -13,10 +13,11 @@ a {
   color: #00b7ff; }
 
 h2 {
-  padding: 3rem 0; }
+  font-size: 3rem;
+  padding: 2rem 0; }
 
 .page-wrapper {
-  max-width: 80rem;
+  max-width: 800px;
   margin: 0 auto; }
 
 /* sticky position not working */

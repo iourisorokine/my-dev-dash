@@ -42,7 +42,11 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.post("/signup", (req, res, next) => {
-  const { name, email, password } = req.body;
+  const {
+    name,
+    email,
+    password
+  } = req.body;
 
   if (email === "" || password === "" || name.length === 0) {
     res.render("auth/signup", {
@@ -52,8 +56,7 @@ router.post("/signup", (req, res, next) => {
     return;
   }
 
-  User.findOne(
-    {
+  User.findOne({
       email
     },
     "email",
@@ -78,7 +81,7 @@ router.post("/signup", (req, res, next) => {
       newUser
         .save()
         .then(user => {
-          req.login(user, function(err) {
+          req.login(user, function (err) {
             if (err) {
               return next(err);
             }

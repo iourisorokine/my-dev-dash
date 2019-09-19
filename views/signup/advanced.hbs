@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" href="/stylesheets/style.css" />
+
+
+<div class="homepage-wrapper">
+  {{#with user}}
+  <div class="homepage-center">
+    <h2>Thank you for signing up!</h2>
+    <h3>Let's complete your profile in 2 more tiny steps:</h3>
+    <form action="/signup/advanced" method="POST">
+      <div class="signup-prog-level py-5">
+        <label for="level">Please select your level in programming:</label>
+        <select name="level" id="level">
+          <option value="novice">Novice</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+          <option value="senior">Senior</option>
+        </select>
+      </div>
+      <div class="row px-5">
+        <p><label for="interests"> You are interested in:</label></p>
+      </div>
+      <div class="signup-interests row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5 text-left">
+          <p>
+            <input type="checkbox" name="interests" value="javascript" checked>
+            <label for="level">Javascript</label>
+          </p>
+          <p>
+            <input type="checkbox" name="interests" value="react.js">
+            <label for="level">React.Js</label>
+          </p>
+          <p>
+            <input type="checkbox" name="interests" value="node.js">
+            <label for="level">Node.Js</label>
+          </p>
+          <p>
+            <input type="checkbox" name="interests" value="frontend">
+            <label for="level">Front-End</label>
+          </p>
+
+          <p>
+            <input type="checkbox" name="interests" value="bootstrap">
+            <label for="level">Bootstrap</label>
+          </p>
+        </div>
+        <div class="col-sm-5 text-left">
+          <p>
+            <input type="checkbox" name="interests" value="php">
+            <label for="level">Php</label>
+          </p>
+          <p>
+            <input type="checkbox" name="interests" value="java">
+            <label for="level">Java</label>
+          </p>
+          <p>
+            <input type="checkbox" name="interests" value="python">
+            <label for="level">Python</label>
+          </p>
+          <p>
+            <input type="checkbox" name="interests" value="ruby">
+            <label for="level">Ruby</label>
+          </p>
+        </div>
+      </div>
+      <p>Interests will let us adapt the content of your feed</p>
+      <button class="style-button" type="submit">Continue</button>
+    </form>
+  </div>
+
+  {{/with}}
+</div>
+
+<script src="/javascripts/signup-dom.js"></script>
