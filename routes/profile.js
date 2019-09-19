@@ -18,17 +18,19 @@ router.get("/edit", (req, res, next) => {
 });
 
 router.post("/edit", (req, res, next) => {
-  const { email, city, level, githubUrl, interests } = req.body;
+  const { email, level, githubUrl } = req.body;
   // const title = req.body.title;
   // const description = req.body.description;
   // const author = req.body.author;
   // const rating = req.body.rating;
-  const mentorship = req.body.mentorship || "no";
+  // const mentorship = req.body.mentorship || "no";
+  const city = req.body.city.toLowerCase();
+  const interests = req.body.interests || "javascript";
   const user = req.user._id;
 
   User.findByIdAndUpdate(
     { _id: user },
-    { email, city, level, githubUrl, interests, mentorship }
+    { email, city, level, githubUrl, interests }
   )
     .then(user => {
       //   res.redirect('/books')

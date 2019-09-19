@@ -10,13 +10,10 @@ router.post("/advanced", (req, res, next) => {
   const { level, interests, githubUrl, city } = req.body;
   // console.log(Array.from(interests));
   // const interests = req.body.interests;
-  const mentorship = req.body.mentorship || "no";
+  // const mentorship = req.body.mentorship || "no";
   const user = req.user._id;
 
-  User.findByIdAndUpdate(
-    { _id: user },
-    { level, interests, mentorship, githubUrl, city }
-  )
+  User.findByIdAndUpdate({ _id: user }, { level, interests, githubUrl, city })
     .then(user => {
       //   res.redirect('/books')
       res.redirect(`/profile`); // book._id === req.params.bookId

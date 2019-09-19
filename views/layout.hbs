@@ -27,7 +27,6 @@
 
 <body>
   <header class="user-header">
-<<<<<<< HEAD
 
     <div class="header-left">
       {{#with user}}
@@ -36,21 +35,12 @@
       {{else}}
       {{/if}}
       <p class="header-welcome">Welcome, {{name}}!</p>
-=======
-    {{#with user}}
-    {{#if imagePath}}
-    <img class="profile-pic" src="{{imagePath}}" alt="">
-    {{else}}
-    {{/if}}
-    <div>
-      <p class="nav-welcome">Welcome, <span class="username">{{name}}!</span></p>
->>>>>>> signup-style
     </div>
 
     <!--Navbar-->
     <nav class="navbar">
       <!-- Collapse button -->
-      <button class="navbar-toggler toggler-example nav-link-custom" type="button" data-toggle="collapse"
+      <button id="menu-btn" class="navbar-toggler toggler-example nav-link-custom" type="button" data-toggle="collapse"
         data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false"
         aria-label="Toggle navigation">Menu</button>
 
@@ -58,7 +48,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent1">
 
         <!-- Links -->
-        <ul class="navbar-nav mr-auto" id="navbarSupportedContent1">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link-custom" href="/">Home</a>
           </li>

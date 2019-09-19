@@ -26,7 +26,11 @@ const userSchema = new Schema(
     pinnedContent: Array,
     githubUrl: String,
     githubId: String,
-    imagePath: String
+    imagePath: {
+      type: String,
+      default:
+        "https://res.cloudinary.com/itstheandre/image/upload/v1568893824/my-dev-dash/rgzdiyqhlazdnlanjjyt.png"
+    }
   },
   {
     timestamps: {
