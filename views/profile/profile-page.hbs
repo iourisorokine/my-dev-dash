@@ -1,7 +1,7 @@
 <div class="page-wrapper profile-page">
   <div class="main-profile-structure">
 
-    <h1 class="title">My Profile</h1>
+    <h2 class="title">My Profile</h2>
 
     {{#if message}}{{message}}{{/if}}
 
@@ -13,7 +13,7 @@
           <img class="profile-pic" src="{{imagePath}}" alt="">
           <p><a href="/profile/upload">Edit you profile pic</a></p>
 
-          <h2 class="user-name">Name: User <span class="this-capitalize">{{name}}</span></h2>
+          <h3 class="user-name">Name: User <span class="this-capitalize">{{name}}</span></h3>
           <p>Email: {{email}}</p>
           <p>Github: {{githubUrl}}</p>
           <p>City: <span class="this-capitalize">{{city}}</span></p>
@@ -21,10 +21,10 @@
 
 
         <div class="biz-side">
-          <h2 class="user-name">Programming level: <span class="this-capitalize">{{level}}</span></h2>
+          <h4 class="user-name">Programming level: <span class="this-capitalize">{{level}}</span></h4>
           <p class="user-name">Interests: {{#each interests}}<span class="this-capitalize">{{this}} </span>{{/each}}
           </p>
-          <h2 class="user-name">Your bio</h2>
+          <h3 class="user-name">Your bio</h3>
           {{!-- {{#if bio}} --}}
           {{#if bio}}
           {{!-- {{#else}} --}}

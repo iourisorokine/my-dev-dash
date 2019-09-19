@@ -1,58 +1,92 @@
 <div class="page-wrapper">
+  <h2>Update Profile</h2>
   {{#with user}}
   <form action="/profile/edit" method="post" enctype="multipart/form-data">
-    <label for="email">Email: </label>
-    <input type="text" name="email" id="email" value="{{email}}">
-    <br><br>
-    <label for="interests"> Select your interest(s) in language(s)</label>
-    <br><br>
-    <input type="checkbox" name="interests" value="javascript">
-    <label for="level">Javascript</label>
-    <input type="checkbox" name="interests" value="react">
-    <label for="level">React.Js</label>
-    <input type="checkbox" name="interests" value="node">
-    <label for="level">Node.Js</label>
-    <input type="checkbox" name="interests" value="front-end">
-    <label for="level">Front-End</label>
-    <input type="checkbox" name="interests" value="bootstrap">
-    <label for="level">Bootstrap</label>
-    <input type="checkbox" name="interests" value="php">
-    <label for="level">Php</label>
-    <input type="checkbox" name="interests" value="java">
-    <label for="level">Java</label>
-    <input type="checkbox" name="interests" value="python">
-    <label for="level">Python</label>
-    <input type="checkbox" name="interests" value="ruby">
-    <label for="level">Ruby</label>
-    <br><br>
-
-    <label for="city">City</label>
-    <input id="city" type="city" name="city" value="{{city}}" placeholder="Your city...">
-
-    <br><br>
-    <label for="level">Level</label>
-    <select name="level" id="level">
-      <option value="novice">Novice</option>
-      <option value="beginner">Beginner</option>
-      <option value="intermediate">Intermediate</option>
-      <option value="advanced">Advanced</option>
-      <option value="senior">Senior</option>
-    </select>
-
-    <br><br>
-
-    <div class="not-novice"></div>
-
-    <label for="github">Github</label>
-    <input id="githubUrl" type="githubUrl" name="githubUrl" value="{{githubUrl}}">
-
-    <label for="bio">Enter your bio</label>
-    <textarea name="bio" id="bio" cols="30" rows="5" value="{{bio}}"></textarea>
-
     <input type='file' name='imagePath' />
-    <br><br>
+    <div class="py-3">
+      <label for="email">Email: </label>
+      <input type="text" name="email" id="email" value="{{email}}">
+    </div>
+    <div class="signup-prog-level py-5">
+      <label for="level">Please select your level in programming:</label>
+      <select name="level" id="level">
+        <option value="novice">Novice</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+        <option value="senior">Senior</option>
+      </select>
+    </div>
+    <div class="row px-3">
+      <p><label for="interests"> You are interested in:</label></p>
+    </div>
+    <div class="signup-interests row">
+      <div class="col-sm-5 text-left">
+        <p>
+          <input type="checkbox" name="interests" value="javascript" checked>
+          <label for="level">Javascript</label>
+        </p>
+        <p>
+          <input type="checkbox" name="interests" value="react.js">
+          <label for="level">React.Js</label>
+        </p>
+        <p>
+          <input type="checkbox" name="interests" value="node.js">
+          <label for="level">Node.Js</label>
+        </p>
+        <p>
+          <input type="checkbox" name="interests" value="frontend">
+          <label for="level">Front-End</label>
+        </p>
 
-    <button class="style-button" type="submit">Update</button>
+        <p>
+          <input type="checkbox" name="interests" value="bootstrap">
+          <label for="level">Bootstrap</label>
+        </p>
+      </div>
+      <div class="col-sm-5 text-left">
+        <p>
+          <input type="checkbox" name="interests" value="php">
+          <label for="level">Php</label>
+        </p>
+        <p>
+          <input type="checkbox" name="interests" value="java">
+          <label for="level">Java</label>
+        </p>
+        <p>
+          <input type="checkbox" name="interests" value="python">
+          <label for="level">Python</label>
+        </p>
+        <p>
+          <input type="checkbox" name="interests" value="ruby">
+          <label for="level">Ruby</label>
+        </p>
+      </div>
+    </div>
+    <div class="row py-3">
+      <div class="col-sm-2">
+        <label for="city">City</label>
+      </div>
+      <div class="col-sm-10">
+        <input id="city" type="city" name="city" value="{{city}}">
+      </div>
+    </div>
+    <div class="row py-3">
+      <div class="col-sm-2">
+        <label for="github">Github</label>
+      </div>
+      <div class="col-sm-10">
+        <input id="githubUrl" type="githubUrl" name="githubUrl" value="{{githubUrl}}">
+      </div>
+    </div>
+    <div class="py-3">
+      <label for="bio">Enter your bio</label>
+      <br>
+      <textarea name="bio" id="bio" cols="50" rows="4" value="{{bio}}"></textarea>
+    </div>
+    <div class="text-center">
+      <button class="style-button" type="submit">Update</button>
+    </div>
   </form>
   {{/with}}
   <script src="/javascripts/script.js"></script>

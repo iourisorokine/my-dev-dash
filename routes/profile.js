@@ -28,19 +28,23 @@ router.post("/edit", uploadCloud.single("imagePath"), (req, res, next) => {
   const image = req.user.imagePath;
   const interests = req.body.interests || "javascript";
   const user = req.user._id;
-  let imagePath;
-  console.log("first: ", req.file.url);
-  if (req.file) {
-    imagePath = req.file.url;
-  } else {
-    imagePath = image;
-  }
-  // const imagePath = () => (req.file.url ? req.file.url : image);
-  console.log(req.file);
+  let imagePath = req.file ? req.file.url : req.user.imagePath;
+  console.log("file url image: ", req.file);
+  console.log("user image: ", req.user.imagePath);
 
   User.findByIdAndUpdate(
-    { _id: user },
-    { email, city, level, githubUrl, interests, bio, imagePath }
+    {
+      _id: user
+    },
+    {
+      email,
+      city,
+      level,
+      githubUrl,
+      interests,
+      bio,
+      imagePath
+    }
   )
     .then(user => {
       //   res.redirect('/books')
@@ -49,22 +53,6 @@ router.post("/edit", uploadCloud.single("imagePath"), (req, res, next) => {
     .catch(err => {
       next(err);
     });
-});
-
-router.get("/upload", (req, res, next) => {
-  res.render("profile/upload", { user: req.user });
-});
-
-router.post("/upload", uploadCloud.single("imagePath"), (req, res, next) => {
-  // console.log('file is: ', req.file)
-  const user = req.user._id;
-  const imagePath = req.file.url;
-  console.log(req.file);
-  User.findByIdAndUpdate({ _id: user }, { imagePath })
-    .then(found => {
-      res.redirect("/profile");
-    })
-    .catch(err => console.log(err));
 });
 
 module.exports = router;
