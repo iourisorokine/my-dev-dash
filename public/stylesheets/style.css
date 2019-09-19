@@ -57,6 +57,9 @@ nav {
 .header-welcome {
   padding: 1rem 2rem 0 2rem; }
 
+.navbar {
+  padding: 4rem 0; }
+
 .navbar ul {
   background-color: white;
   padding: 10px;
