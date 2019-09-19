@@ -1,13 +1,3 @@
-@media (max-width: 350px) {
-  .user-header {
-    padding-left: 0;
-  }
-
-  .header-welcome {
-    display: none;
-  }
-}
-
 * {
   padding: 0;
   margin: 0;
@@ -48,6 +38,7 @@ h3 {
   height: 10rem;
   padding: 0 5rem;
   background-color: white;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   color: #174b5e;
@@ -328,11 +319,11 @@ newsfeed styles
   justify-content: center;
 }
 
-.profile-page {
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-}
+// .profile-page {
+//   padding: 3rem;
+//   display: flex;
+//   flex-direction: column;
+// }
 
 .title {
   margin: 0 auto;
@@ -345,12 +336,33 @@ newsfeed styles
 
 // Profile Part
 .profile-card {
-  // display: flex;
+  display: flex;
+  flex-wrap: wrap;
   // flex-direction: column;
   // align-items: center;
   // justify-content: space-between;
-  width: 70rem; //80vw;
+  max-width: 70rem; //80vw;
   // height: 80vh;
+}
+
+.personal-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 50%;
+  min-width: 300px;
+  align-items: center;
+  padding: 2rem;
+}
+
+.biz-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  min-width: 300px;
+  padding: 2rem;
 }
 
 .upload-form-container {
@@ -369,15 +381,6 @@ newsfeed styles
   // align-items: center;
 }
 
-.personal-profile {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  width: 50%;
-  align-items: center;
-  padding: 2rem;
-}
-
 .main-profile-structure {
   display: flex;
   flex-direction: column;
@@ -387,15 +390,6 @@ newsfeed styles
 .user-name {
   padding: 0;
   line-height: 3rem;
-}
-
-.biz-side {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  padding: 2rem;
 }
 
 .edit-profile {
@@ -416,6 +410,8 @@ footer {
 }
 
 .footer-content {
+  width: 100vw;
+  padding: 2rem;
   max-width: 800px;
   margin: auto;
 }
@@ -424,4 +420,14 @@ footer {
   color: #999;
   line-height: 1rem;
   font-size: 1rem;
+}
+
+@media (max-width: 350px) {
+  .user-header {
+    padding-left: 0;
+  }
+
+  .header-welcome {
+    display: none;
+  }
 }
