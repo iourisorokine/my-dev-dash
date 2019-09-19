@@ -4,7 +4,7 @@
     {{#if message}}
     <h4> {{message}}</h4>
     {{/if}}
-    <button type="submit" class="style-button form-button ">Add a connection</button>
+    <button type="submit" class="style-button form-button my-5">Add a connection</button>
   </form>
 </div>
 {{!-- Each Card --}}
@@ -14,8 +14,8 @@
 
   <div class="connection-content">
     <h4 class="connection-name">{{name}}</h4>
-    <h5 class="connection-city">City: {{city}}</h5>
-    <p class="connection-interests">Interests: {{interests}}</p>
+    <h5 class="connection-city">City: <span class="this-capitalize">{{city}}</span></h5>
+    <p class="connection-interests">Interests: <span class="this-capitalize">{{interests}}</span></p>
   </div>
 
   <div class="connection-photo">

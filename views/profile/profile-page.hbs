@@ -1,23 +1,51 @@
-<div class="page-wrapper">
+<div class="page-wrapper profile-page">
+  <div class="main-profile-structure">
 
-  <h1>Profile</h1>
+    <h1 class="title">My Profile</h1>
 
-  {{#if message}}{{message}}{{/if}}
+    {{#if message}}{{message}}{{/if}}
 
-  {{#with user}}
-  {{#if imagePath}}
-  <img class="profile-pic" src="{{imagePath}}" alt="">
-  <p><a href="/profile/upload">Edit you profile pic</a></p>
-  {{else}}
-  <p><a href="/profile/upload">Add a profile Pic</a></p>
-  {{/if}}
-  <h2>name: {{name}}</h2>
-  <h3>email: {{email}}</h3>
-  <h3>City: <span class="connection-city">{{city}}</span></h3>
-  <p>Programming level: {{level}}</p>
-  <p>Interests: {{#each interests}}{{this}}{{/each}}</p>
+    {{#with user}}
+    <div class="content-container profile-card">
+      <div class="user-profile">
 
-  <p>Github: {{githubUrl}}</p>
-  <p><a class="style-button" href="/profile/edit"> Edit your profile</a></p>
+        <div class="personal-profile">
+          <img class="profile-pic" src="{{imagePath}}" alt="">
+          <p><a href="/profile/upload">Edit you profile pic</a></p>
+
+          <h2 class="user-name">Name: User <span class="this-capitalize">{{name}}</span></h2>
+          <p>Email: {{email}}</p>
+          <p>Github: {{githubUrl}}</p>
+          <p>City: <span class="this-capitalize">{{city}}</span></p>
+        </div>
+
+
+        <div class="biz-side">
+          <h2 class="user-name">Programming level: <span class="this-capitalize">{{level}}</span></h2>
+          <p class="user-name">Interests: {{#each interests}}<span class="this-capitalize">{{this}} </span>{{/each}}
+          </p>
+          <h2 class="user-name">Your bio</h2>
+          {{!-- {{#if bio}} --}}
+          {{#if bio}}
+          {{!-- {{#else}} --}}
+          <div class="text-center">
+            <div class="bio">
+              <p>{{bio}}</p>
+            </div>
+
+            {{else}}
+            <p>Time to add your bio :) Edit your profile and get craft a stunning presentation.</p>
+            {{/if}}
+          </div>
+          {{!-- {{/unless}} --}}
+        </div>
+
+      </div>
+    </div>
+    <div class="edit-profile">
+      <a class="style-button " id="edit-profile" href="/profile/edit"> Edit your profile</a>
+
+    </div>
+    {{!-- <p class="edit-profile"></p> --}}
+  </div>
   {{/with}}
-</div>
