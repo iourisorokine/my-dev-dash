@@ -7,9 +7,9 @@
 
     {{#with user}}
     <div class="content-container profile-card">
-      <div class="user-profile">
+      <div class="user-profile row">
 
-        <div class="personal-profile">
+        <div class="personal-profile col-sm-6">
           <img class="profile-pic" src="{{imagePath}}" alt="">
           <p><a href="/profile/upload">Edit you profile pic</a></p>
 
@@ -20,7 +20,7 @@
         </div>
 
 
-        <div class="biz-side">
+        <div class="biz-side col-sm-6">
           <h4 class="user-name">Programming level: <span class="this-capitalize">{{level}}</span></h4>
           <p class="user-name">Interests: {{#each interests}}<span class="this-capitalize">{{this}} </span>{{/each}}
           </p>

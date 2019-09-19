@@ -1,9 +1,3 @@
-@media (max-width: 350px) {
-  .user-header {
-    padding-left: 0; }
-  .header-welcome {
-    display: none; } }
-
 * {
   padding: 0;
   margin: 0;
@@ -37,6 +31,7 @@ h3 {
   height: 10rem;
   padding: 0 5rem;
   background-color: white;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   color: #174b5e;
@@ -258,11 +253,6 @@ newsfeed styles
   display: flex;
   justify-content: center; }
 
-.profile-page {
-  padding: 3rem;
-  display: flex;
-  flex-direction: column; }
-
 .title {
   margin: 0 auto;
   padding: 5rem; }
@@ -271,7 +261,27 @@ newsfeed styles
   text-transform: capitalize; }
 
 .profile-card {
-  width: 70rem; }
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 70rem; }
+
+.personal-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 50%;
+  min-width: 300px;
+  align-items: center;
+  padding: 2rem; }
+
+.biz-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  min-width: 300px;
+  padding: 2rem; }
 
 .upload-form-container {
   display: flex;
@@ -286,14 +296,6 @@ newsfeed styles
   display: flex;
   justify-content: space-around; }
 
-.personal-profile {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  width: 50%;
-  align-items: center;
-  padding: 2rem; }
-
 .main-profile-structure {
   display: flex;
   flex-direction: column;
@@ -302,14 +304,6 @@ newsfeed styles
 .user-name {
   padding: 0;
   line-height: 3rem; }
-
-.biz-side {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  padding: 2rem; }
 
 .edit-profile {
   display: inline-block;
@@ -324,6 +318,8 @@ footer {
   box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5); }
 
 .footer-content {
+  width: 100vw;
+  padding: 2rem;
   max-width: 800px;
   margin: auto; }
 
