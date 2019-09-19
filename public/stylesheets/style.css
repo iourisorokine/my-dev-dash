@@ -328,4 +328,10 @@ footer {
   line-height: 1rem;
   font-size: 1rem; }
 
+@media (max-width: 420px) {
+  .user-header {
+    padding-left: 0; }
+  .header-welcome {
+    display: none; } }
+
 /*# sourceMappingURL=style.css.map */
