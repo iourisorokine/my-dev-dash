@@ -29,8 +29,9 @@ const userSchema = new Schema(
     imagePath: {
       type: String,
       default:
-        "https://res.cloudinary.com/itstheandre/image/upload/v1568893824/my-dev-dash/rgzdiyqhlazdnlanjjyt.png"
-    }
+        "https://res.cloudinary.com/itstheandre/image/upload/v1568908103/my-dev-dash/xkg64abvucedo88zeej8.png"
+    },
+    bio: String
   },
   {
     timestamps: {

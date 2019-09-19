@@ -164,15 +164,24 @@ newsfeed styles
   align-self: center;
   padding: 4rem; }
 
+.content-card {
+  margin: 2rem auto; }
+
 .content-container {
-  box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5);
-  margin: 3rem auto; }
+  box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5); }
 
 .connection-card {
   display: flex;
   justify-content: space-between;
   width: 30vw;
-  margin: 3rem auto; }
+  height: 18vh; }
+
+.connection-photo {
+  height: 18vh; }
+
+.connection-pic {
+  height: 100%;
+  width: 100%; }
 
 .connection-content {
   padding: 1rem; }
@@ -186,13 +195,11 @@ newsfeed styles
 .connection-city,
 .connection-interests {
   font-size: 2rem;
-  padding: 0.8rem 0;
-  text-transform: capitalize; }
+  padding: 0.8rem 0; }
 
 .form {
   display: flex;
-  justify-content: center;
-  padding: 1rem; }
+  justify-content: center; }
 
 .add-form {
   display: flex;
@@ -239,5 +246,62 @@ newsfeed styles
   margin: 0 auto;
   display: flex;
   justify-content: center; }
+
+.profile-page {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column; }
+
+.title {
+  margin: 0 auto;
+  padding: 5rem; }
+
+.this-capitalize {
+  text-transform: capitalize; }
+
+.profile-card {
+  width: 70rem; }
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.user-profile {
+  display: flex;
+  justify-content: space-around; }
+
+.personal-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 50%;
+  align-items: center;
+  padding: 2rem; }
+
+.main-profile-structure {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.user-name {
+  padding: 0;
+  line-height: 3rem; }
+
+.biz-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  padding: 2rem; }
+
+.edit-profile {
+  display: inline-block;
+  padding: 1rem 2rem;
+  margin: 5rem; }
+
+.text-center {
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
