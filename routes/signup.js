@@ -21,9 +21,6 @@ router.post("/advanced", (req, res, next) => {
   // const mentorship = req.body.mentorship || "no";
   const user = req.user._id;
 
-<<<<<<< HEAD
-  User.findByIdAndUpdate({ _id: user }, { level, interests, githubUrl, city })
-=======
   User.findByIdAndUpdate({
       _id: user
     }, {
@@ -33,7 +30,6 @@ router.post("/advanced", (req, res, next) => {
       // githubUrl,
       // city
     })
->>>>>>> signup-improve
     .then(user => {
       //   res.redirect('/books')
       res.redirect("/signup/final"); // book._id === req.params.bookId
