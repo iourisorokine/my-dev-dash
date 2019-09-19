@@ -20,13 +20,14 @@ h2 {
   margin: 0 auto; }
 
 .user-header {
+  position: sticky;
   height: 10rem;
   padding: 0 5rem;
   background-color: white;
   display: flex;
   justify-content: space-between;
   color: #174b5e;
-  box-shadow: 0.4rem 0.4rem 0.2rem rgba(23, 75, 94, 0.3); }
+  box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5); }
 
 .signup-top {
   display: flex; }
@@ -36,15 +37,31 @@ h2 {
   height: auto;
   border-radius: 50%; }
 
-.nav-welcome,
-.nav-link {
+nav {
+  width: 16rem; }
+
+.header-left {
+  height: 10rem;
+  display: flex;
+  align-items: center; }
+
+.header-welcome,
+.nav-link-custom {
   color: #174b5e;
   font-family: "Russo One", sans-serif;
   text-decoration: none;
   font-size: 2rem; }
 
-.nav-link:hover {
-  transform: scale(0.7);
+.navbar ul {
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5); }
+
+.navbar ul li {
+  padding: 10px; }
+
+.nav-link-custom:hover {
+  text-decoration: none;
   color: rgba(23, 75, 94, 0.3); }
 
 /* 
