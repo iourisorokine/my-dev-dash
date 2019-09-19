@@ -42,25 +42,12 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.post("/signup", (req, res, next) => {
-  // console.log(req.body.mento);
-  // const email = req.body.email;
-  const {
-    name,
-    email,
-    // city,
-    // level,
-    // github,
-    password
-    // interests
-  } = req.body;
-  // console.log(Array.from(interests));
-  // const interests = req.body.interests;
-  // const mentorship = req.body.mentorship || "no";
+  const { name, email, password } = req.body;
 
-  // const password = req.body.password;
   if (email === "" || password === "" || name.length === 0) {
     res.render("auth/signup", {
-      message: "Please fill out the form"
+      message: "Please fill out the form",
+      layout: false
     });
     return;
   }
@@ -73,7 +60,8 @@ router.post("/signup", (req, res, next) => {
     (err, user) => {
       if (user !== null) {
         res.render("auth/signup", {
-          message: "The email already exists"
+          message: "The email already exists",
+          layout: false
         });
         return;
       }
@@ -85,11 +73,6 @@ router.post("/signup", (req, res, next) => {
         name,
         email,
         password: hashPass
-        // city,
-        // level,
-        // mentorship,
-        // interests,
-        // github
       });
 
       newUser

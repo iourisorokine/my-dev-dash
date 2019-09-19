@@ -1,43 +1,48 @@
-body {
+* {
   padding: 0;
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   box-sizing: border-box; }
 
+html {
+  font-size: 10px; }
+
+body {
+  font: 1.4rem "Lucida Grande", Helvetica, Arial, sans-serif; }
+
 a {
-  color: #00B7FF; }
+  color: #00b7ff; }
 
 h2 {
-  padding: 30px 0; }
+  padding: 3rem 0; }
 
 .page-wrapper {
-  max-width: 800px;
+  max-width: 80rem;
   margin: 0 auto; }
 
 .user-header {
-  height: 100px;
-  padding: 0 50px;
+  height: 10rem;
+  padding: 0 5rem;
   background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #174b5e;
-  box-shadow: 4px 4px 2px rgba(23, 75, 94, 0.3); }
+  box-shadow: 0.4rem 0.4rem 0.2rem rgba(23, 75, 94, 0.3); }
 
 .signup-top {
   display: flex; }
 
 .profile-pic {
-  width: 80px;
+  width: 8rem;
   height: auto;
   border-radius: 50%; }
 
 .nav-welcome,
 .nav-link {
   color: #174b5e;
-  font-family: 'Russo One', sans-serif;
+  font-family: "Russo One", sans-serif;
   text-decoration: none;
-  font-size: 20px; }
+  font-size: 2rem; }
 
 .nav-link:hover {
   transform: scale(0.7);
@@ -58,32 +63,29 @@ Login & signup page styles
 .homepage-center {
   color: black;
   text-align: center;
-  padding: 50px;
+  padding: 5rem;
   background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 8px 8px rgba(255, 255, 255, 0.4); }
-
-.signup-wrapper {
-  display: flex;
-  justify-content: center; }
+  box-shadow: 0.8rem 0.8rem rgba(255, 255, 255, 0.4); }
 
 .homepage-wrapper h1 {
   font-size: 4rem; }
 
 .style-button {
-  margin: 10px;
-  padding: 10px 20px;
-  width: 130px;
+  margin: 1rem;
+  padding: 1rem 2rem;
+  width: 13rem;
   text-decoration: none;
+  background-color: white;
   color: rgba(0, 0, 0, 0.7);
-  border: 1px solid black;
-  box-shadow: 4px 4px rgba(0, 0, 0, 0.7); }
+  border: 0.1rem solid black;
+  box-shadow: 0.4rem 0.4rem rgba(0, 0, 0, 0.7); }
 
 .style-button:hover {
   background-color: black;
   color: white; }
 
 .account-message {
-  padding-top: 50px; }
+  padding-top: 5rem; }
 
 /* 
 newsfeed styles
@@ -92,15 +94,12 @@ newsfeed styles
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 10px;
-  margin: 10px auto;
-  background-color: white;
-  border: 1px solid #174b5e;
-  box-shadow: 4px 4px 2px rgba(23, 75, 94, 0.3); }
+  padding: 1rem;
+  background-color: white; }
 
 .news-container-left {
   flex: 5;
-  min-width: 300px;
+  min-width: 30rem;
   text-decoration: none;
   color: black; }
 
@@ -110,21 +109,21 @@ newsfeed styles
   background-color: rgba(23, 75, 94, 0.2); }
 
 .news-container-right {
-  padding: 10px;
+  padding: 1rem;
   flex: 2; }
 
 .news-container-right img {
-  width: 150px;
+  width: 15rem;
   height: auto; }
 
 .btn-pin {
   flex: 1;
-  width: 70px;
-  height: 70px;
+  width: 7rem;
+  height: 7rem;
   color: #174b5e;
-  margin: 10px;
-  border: 1px solid #174b5e;
-  box-shadow: 4px 4px 2px rgba(23, 75, 94, 0.3); }
+  margin: 1rem;
+  border: 0.1rem solid #174b5e;
+  box-shadow: 0.4rem 0.4rem 0.2rem rgba(23, 75, 94, 0.3); }
 
 .btn-pin:hover {
   transition: ease;
@@ -132,5 +131,75 @@ newsfeed styles
   transform: scale(0.9);
   color: white;
   background-color: #174b5e; }
+
+.connections-page {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding: 4rem; }
+
+.content-container {
+  box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5);
+  margin: 3rem auto; }
+
+.connection-card {
+  display: flex;
+  justify-content: space-between;
+  width: 30vw;
+  margin: 3rem auto; }
+
+.connection-content {
+  padding: 1rem; }
+
+.connection-name {
+  color: black;
+  font-size: 3rem;
+  text-decoration: none;
+  text-transform: capitalize; }
+
+.connection-city,
+.connection-interests {
+  font-size: 2rem;
+  padding: 0.8rem 0;
+  text-transform: capitalize; }
+
+.form {
+  display: flex;
+  justify-content: center;
+  padding: 1rem; }
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 5rem; }
+
+.form-button {
+  margin: 0 auto; }
+
+/* .form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+ */
+.signup-form-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; }
+
+.signup-h2 {
+  display: inline-block;
+  padding: 0;
+  margin: 0 auto; }
+
+.signup-form-element {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.form-element {
+  padding: 1em 0; }
 
 /*# sourceMappingURL=style.css.map */

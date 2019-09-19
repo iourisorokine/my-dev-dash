@@ -4,7 +4,7 @@ const User = require("../models/User");
 const cron = require("cron");
 
 router.get("/", async (req, res, next) => {
-  const connections = req.user.connections;
+  const connections = req.user.connections.reverse();
 
   res.render("connections/connection-page", {
     connections,
@@ -58,10 +58,10 @@ const checkConnections = async (user, flash) => {
     query,
     { $count: "matching_level_connections" }
   ]);
-  console.log(count[0].matching_level_connections);
-  console.log(user.connections.length);
-  if (count[0].matching_level_connections === user.connections.length) {
-    return "try again next week";
+  const countMatch =
+    count[0].matching_level_connections === user.connections.length;
+  if (countMatch) {
+    return "Try again next week ;)";
   }
 
   const random = await User.aggregate([query, { $sample: { size: 1 } }]);
@@ -69,8 +69,14 @@ const checkConnections = async (user, flash) => {
   const randomUser = random[0];
   // console.log("User Level", randomUser.name);
   // console.log("Random User", randomUser.level, randomUser.name);
-  if (String(user._id) === String(randomUser._id))
-    return "try again in an hour";
+  const equality = String(user._id) === String(randomUser._id);
+  if (equality) {
+    return "We seem to be getting a huge influx of sign ups. Could you try again in an hour?";
+  }
+
+  if (equality && !countMatch) await checkConnections(user);
+  console.log("EQUALITY", equality);
+  console.log("NOT COUNT MATCH", !countMatch);
 
   // console.log(user.connections.map(el => el._id));
   // console.log(String(randomUser._id));
