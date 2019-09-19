@@ -1,10 +1,27 @@
-<h1>Your connections</h1>
+<h1 class="connections-page">Your connections</h1>
+<div class="form">
+  <form action="/connections/add" method="post" class="add-form">
+    {{#if message}}
+    <h4> {{message}}</h4>
+    {{/if}}
+    <button type="submit" class="style-button form-button ">Add a connection</button>
+  </form>
+</div>
+{{!-- Each Card --}}
 {{#each connections}}
-<p><a href="/connections/{{_id}}">{{name}}</a> </p>
+<div class="connection-card content-card content-container" style="cursor: pointer;"
+  onclick="window.location='/connections/{{id}}';">
+
+  <div class="connection-content">
+    <h4 class="connection-name">{{name}}</h4>
+    <h5 class="connection-city">City: {{city}}</h5>
+    <p class="connection-interests">Interests: {{interests}}</p>
+  </div>
+
+  <div class="connection-photo">
+    <img src=" {{imagePath}}" alt="" style="height: 100%" width="100%">
+  </div>
+</div>
+{{!-- </a> --}}
+{{!-- </a> --}}
 {{/each}}
-<h3>No connections yet?</h3>
-<form action="/connections/add" method="post">
-  {{#if message}}
-  {{message}}
-  {{/if}}
-  <button type="submit">Add a connection</button></form>

@@ -3,38 +3,38 @@
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
   integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link rel="stylesheet" href="/stylesheets/style.css" />
-<div class="signup-top">
-  <h2>Signup</h2>
-  <p>or</p>
-  <a class="style-button" href="/auth/github">
-    <i class="fa fa-github" aria-hidden="true"></i>
-    Signup via Github
-  </a>
+
+<div class="homepage-wrapper">
+  <div class="homepage-center">
+    <h2>Sign Up</h2>
+    <form action="/auth/signup" method="POST" class="form-container">
+      <label for="name">Name:</label>
+      <input id="name" type="text" name="name" placeholder="Your name...">
+
+      <label for="email">Email:</label>
+      <input id="email" type="text" name="email" placeholder="email">
+      <div class="form-element">
+        <label for="password">Password:</label>
+        <input id="password" type="password" name="password" placeholder="Your password">
+      </div>
+
+
+
+      {{#if message }}
+      <div class="error-message">{{ message }}</div>
+      {{/if}}
+      <br>
+      <button class="style-button">Sign up</button>
+      <a class="style-button" href="/auth/github">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        Sign up via Github
+      </a>
+      <p class="account-message">
+        Do you already have an account?
+        <a href="/auth/login">Login</a>
+      </p>
+      </p>
+    </form>
+  </div>
 </div>
-<form action="/auth/signup" method="POST" id="form-container">
-  <label for="name">Name</label>
-  <input id="name" type="text" name="name" placeholder="Your name here...">
-
-  <br><br>
-
-  <label for="email">E-mail</label>
-  <input id="email" type="email" name="email" placeholder="Your email..." required>
-  <br>
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password" required>
-  <br>
-
-  {{#if message }}
-  <div class="error-message">{{ message }}</div>
-  {{/if}}
-
-  <br><br>
-
-  <button>Create account</button>
-
-  <p class="account-message">
-    Do you already have an account?
-    <a href="/auth/login">Login</a>
-  </p>
-</form>
 <script src="/javascripts/script.js"></script>
