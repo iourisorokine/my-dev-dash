@@ -8,20 +8,32 @@
   <div class="homepage-center">
     <h2>Sign Up</h2>
     <form action="/auth/signup" method="POST" class="form-container">
-      <label for="name">Name:</label>
-      <input id="name" type="text" name="name" placeholder="Your name...">
-
-      <label for="email">Email:</label>
-      <input id="email" type="text" name="email" placeholder="email">
-      <div class="form-element">
-        <label for="password">Password:</label>
-        <input id="password" type="password" name="password" placeholder="Your password">
+      <div class="row py-3">
+        <div class="col-sm-4">
+          <label for="name">Name:</label>
+        </div>
+        <div class="col-sm-8">
+          <input id="name" type="text" name="name" placeholder="Your name...">
+        </div>
       </div>
-
-
-
+      <div class="row py-3">
+        <div class="col-sm-4">
+          <label for="email">Email:</label>
+        </div>
+        <div class="col-sm-8">
+          <input id="email" type="text" name="email" placeholder="john@doe.com">
+        </div>
+      </div>
+      <div class="row py-3">
+        <div class="col-sm-4">
+          <label for="password">Password:</label>
+        </div>
+        <div class="col-sm-8">
+          <input id="password" type="password" name="password" placeholder="Your password">
+        </div>
+      </div>
       {{#if message }}
-      <div class="error-message">{{ message }}</div>
+      <div class="error-message" style="color:red;">{{ message }}</div>
       {{/if}}
       <br>
       <button class="style-button">Sign up</button>

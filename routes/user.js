@@ -4,14 +4,6 @@ const axios = require("axios");
 const User = require("../models/User");
 let newsList = [];
 
-checkContentId = (item, array) => {
-  let idPresent = false;
-  array.forEach(arrayItem => {
-    if (arrayItem.contentId === item.contentId) idPresent = true;
-  });
-  return idPresent;
-};
-
 const checkInterests = () => {
   return (req, res, next) => {
     if (!req.user.interests) {
@@ -53,21 +45,10 @@ router.get("/feed", checkInterests(), (req, res, next) => {
   axios.get(eventsCall)
     .then(response => {
       const eventsResp = response.data.events;
-      console.log(eventsResp, eventsResp.length)
-      if (eventsResp.length != 0) {
+
+      if (eventsResp.length) {
         for (let i = 0; i < eventsResp.length; i++) {
-          let eToPush = {};
-          eToPush.source = {
-            name: 'Event'
-          }
-          eToPush.title = eventsResp[i].name.text;
-          eToPush.description = eventsResp[i].description.text;
-          eToPush.url = eventsResp[i].url;
-          // console.log(eventsResp[i].logo);
-          eToPush.urlToImage = (eventsResp[i].logo) ? eventsResp[i].logo.url : '/images/default-news-pic.jpeg';
-          eToPush.publishedAt = eventsResp[i].published;
-          eToPush.source.event = true;
-          eToPush.contentId = `${eventsResp[i].name.text}${eventsResp[i].published}`
+          let eToPush = formatTheEvent(eventsResp[i]);
           eventsList.push(eToPush);
         }
       }
@@ -83,13 +64,7 @@ router.get("/feed", checkInterests(), (req, res, next) => {
               }
             })
           }
-          newsList.forEach(item => {
-            if (item.content) item.content = item.content.slice(0, item.content.length - 20) + ' ...(see more)';
-            item.contentId = `${item.title}${item.publishedAt}`;
-            if (!item.urlToImage) item.urlToImage = '/images/default-news-pic.jpeg';
-            item.publishedAt = item.publishedAt.slice(0, 10);
-            if (checkContentId(item, req.user.pinnedContent)) item.pinned = true;
-          })
+          newsList = formatNews(newsList, req.user.pinnedContent);
 
           res.render('user/feed', {
             newsList,
@@ -110,9 +85,7 @@ router.post("/pin/:itemNb", (req, res, next) => {
   User.findByIdAndUpdate(req.user._id, {
       pinnedContent: currentContent
     })
-    .then(found => {
-      // res.redirect("/user/feed");
-    })
+    .then(found => {})
     .catch(err => {
       next(err);
     });
@@ -157,9 +130,41 @@ router.post("/pinned/remove/:itemNb", (req, res, next) => {
     });
 });
 
+// outside functions to make the route callls shorter
 
+const formatNews = (newsListToFormat, listOfPinnedItems) => {
+  newsListToFormat.forEach(item => {
+    if (item.content) item.content = item.content.slice(0, item.content.length - 20) + ' ...(see more)';
+    item.contentId = `${item.title}${item.publishedAt}`;
+    if (!item.urlToImage) item.urlToImage = '/images/default-news-pic.jpeg';
+    item.publishedAt = item.publishedAt.slice(0, 10);
+    if (checkContentId(item, listOfPinnedItems)) item.pinned = true;
+  })
+  return newsListToFormat;
+}
 
+const checkContentId = (item, array) => {
+  let idPresent = false;
+  array.forEach(arrayItem => {
+    if (arrayItem.contentId === item.contentId) idPresent = true;
+  });
+  return idPresent;
+};
 
+const formatTheEvent = rawEventData => {
+  let eToPush = {};
+  eToPush.source = {
+    name: 'Event'
+  }
+  eToPush.title = rawEventData.name.text;
+  eToPush.description = rawEventData.description.text;
+  eToPush.url = rawEventData.url;
+  eToPush.urlToImage = (rawEventData.logo) ? rawEventData.logo.url : '/images/default-news-pic.jpeg';
+  eToPush.publishedAt = rawEventData.published;
+  eToPush.source.event = true;
+  eToPush.contentId = `${rawEventData.name.text}${rawEventData.published}`
 
+  return eToPush;
+}
 
 module.exports = router;
