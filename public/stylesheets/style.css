@@ -224,4 +224,16 @@ newsfeed styles
 .form-element {
   padding: 1em 0; }
 
+.username {
+  text-transform: capitalize; }
+
+.shame-div {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center; }
+
 /*# sourceMappingURL=style.css.map */

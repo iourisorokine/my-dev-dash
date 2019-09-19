@@ -1,70 +1,77 @@
 {{#with user}}
-<h1>Thank you for signing up!</h1>
-<h4>Now it's time to edit the rest of your profile</h4>
-<p>Please take some time to finish this process in order to better enjoy the experience</p>
-<form action="/signup/advanced" method="POST">
+<div class="homepage-center">
+
+  <h1>Thank you for signing up!</h1>
+  <h4>Now it's time to edit the rest of your profile</h4>
+  <p>Please take some time to finish this process in order to better enjoy the experience</p>
+  <form action="/signup/advanced" method="POST">
 
 
-  <h4>Let's start with a self-assessment:</h4>
+    <h4>Let's start with a self-assessment:</h4>
 
-  <p>What do you think is your programming level?</p>
+    <p>What do you think is your programming level?</p>
 
-  <label for="level">First time writing code? Or can you build the internet in less than 10 days?</label><br><br>
-  <select name="level" id="level">
-    <option value="novice">Novice</option>
-    <option value="beginner">Beginner</option>
-    <option value="intermediate">Intermediate</option>
-    <option value="advanced">Advanced</option>
-    <option value="senior">Senior</option>
-  </select>
+    <label for="level">First time writing code? Or can you build the internet in less than 10 days?</label><br><br>
+    <select name="level" id="level">
+      <option value="novice">Novice</option>
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="advanced">Advanced</option>
+      <option value="senior">Senior</option>
+    </select>
 
-  <br>
-
-  <div class="not-novice"></div>
-  {{!-- Dynamically generated --}}
-  <div class="thanks-mentor"></div>
-  {{!-- Dynamically generated --}}
+    <br>
 
 
-  <h4>Time for us to populate your feed.</h4>
-  <label for="interests"> Select your interest(s) in language(s)</label>
-  <br><br>
-  <input type="checkbox" name="interests" value="javascript" checked>
-  <label for="level">Javascript</label>
-  <input type="checkbox" name="interests" value="react">
-  <label for="level">React.Js</label>
-  <input type="checkbox" name="interests" value="node.js">
-  <label for="level">Node.Js</label>
-  <input type="checkbox" name="interests" value="front-end">
-  <label for="level">Front-End</label>
-  <input type="checkbox" name="interests" value="bootstrap">
-  <label for="level">Bootstrap</label>
-  <input type="checkbox" name="interests" value="php">
-  <label for="level">Php</label>
-  <input type="checkbox" name="interests" value="java">
-  <label for="level">Java</label>
-  <input type="checkbox" name="interests" value="python">
-  <label for="level">Python</label>
-  <input type="checkbox" name="interests" value="ruby">
-  <label for="level">Ruby</label>
+    <h4>Time for us to populate your feed.</h4>
+    <label for="interests"> Select your interest(s) in language(s)</label>
+    <br><br>
+    <input type="checkbox" name="interests" value="javascript" checked>
+    <label for="level">Javascript</label>
+    <input type="checkbox" name="interests" value="react.js">
+    <label for="level">React.Js</label>
+    <input type="checkbox" name="interests" value="node.js">
+    <label for="level">Node.Js</label>
+    <input type="checkbox" name="interests" value="frontend">
+    <label for="level">Front-End</label>
+    <input type="checkbox" name="interests" value="bootstrap">
+    <label for="level">Bootstrap</label>
+    <input type="checkbox" name="interests" value="php">
+    <label for="level">Php</label>
+    <input type="checkbox" name="interests" value="java">
+    <label for="level">Java</label>
+    <input type="checkbox" name="interests" value="python">
+    <label for="level">Python</label>
+    <input type="checkbox" name="interests" value="ruby">
+    <label for="level">Ruby</label>
+    {{!--  --}}
 
-  <br>
-  <h4>Almost over! Last few steps</h4>
-  <label for="city">City</label>
-  <input id="city" type="text" name="city" placeholder="Your city...">
-  <h4>Let's make your account more social!</h4>
-  <label for="githubUrl">What is your Github Account?</label><br><br>
-  {{#unless githubUrlUrl}}
-  <input id="githubUrl" type="githubUrl" name="githubUrl" value="{{githubUrl}}">
-  {{else}}
-  <input id="github" type="github" name="github" placeholder="Your GitHub Account...">
-  {{/unless}}
-  <br><br>
-  <button type="submit">Finish sign up</button>
-</form>
 
-<br><br><br>
-We let you skip it, but you've got to promise you will fill it. Deal, {{name}}?
+    <br>
+    <h4>Almost over! Last few steps</h4>
+    <label for="city">City</label>
+    <input id="city" type="text" name="city" placeholder="Your city...">
+    <h4>Let's make your account more social!</h4>
+    <label for="githubUrl">What is your Github Account?</label><br><br>
+    {{#unless githubUrlUrl}}
+    <input id="githubUrl" type="githubUrl" name="githubUrl" value="{{githubUrl}}">
+    {{else}}
+    <input id="github" type="github" name="github" placeholder="Your GitHub Account...">
+    {{/unless}}
+    <br><br>
+    <div class="height-test"></div>
+    <button type="submit">Finish sign up</button>
+  </form>
+</div>
+
+
+<div class="shame-div">
+  {{!-- HERE WE SHOULD ADD A LINK TO PROFILE FOR THE PERSON TO EDIT THERE, THEN? --}}
+  <p class="shame">
+    We let you skip it, but you've got to promise you will fill it. Deal, <span class="username">{{name}}!</span>
+  </p>
+</div>
+
 {{/with}}
 
 <script src="/javascripts/signup-dom.js"></script>
