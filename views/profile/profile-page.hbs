@@ -11,12 +11,11 @@
 
         <div class="personal-profile col-sm-6">
           <img class="profile-pic" src="{{imagePath}}" alt="">
-          <p><a href="/profile/upload">Edit you profile pic</a></p>
 
           <h3 class="user-name">Name: User <span class="this-capitalize">{{name}}</span></h3>
-          <p>Email: {{email}}</p>
-          <p>Github: {{githubUrl}}</p>
-          <p>City: <span class="this-capitalize">{{city}}</span></p>
+          <p class="user-name">Email: {{email}}</p>
+          <p class="user-name">Github: {{githubUrl}}</p>
+          <p class="user-name">City: <span class="this-capitalize">{{city}}</span></p>
         </div>
 
 
@@ -29,12 +28,13 @@
           {{#if bio}}
           {{!-- {{#else}} --}}
           <div class="text-center">
-            <div class="bio text-center">
+            <div class="user-name bio text-center">
               <p>{{bio}}</p>
             </div>
 
             {{else}}
-            <p class="text-center">Time to add your bio :) Edit your profile and get craft a stunning presentation.</p>
+            <p class="user-name text-center">Time to add your bio :) Edit your profile and get craft a stunning
+              presentation.</p>
             {{/if}}
           </div>
           {{!-- {{/unless}} --}}
