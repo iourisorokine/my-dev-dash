@@ -46,6 +46,8 @@ The app creates a personalized news and events feed based on the user's interest
 
 Since news and events are, usually, ephemeral, we also wanted to get a chance for people to store these "cards" for see later. No matter if you can't find a news article in your feed - if you "pinned it", you will always be able to go back and check it.
 
+It is true the answer we're providing is giving you more information, but for now you can check the ones you REALLY want to read later, and provide something more curated. If you're learning Javascript, it doesn't make a lot of sense to confuse you and give you news about the state of C programming.
+
 ### Learning alone, sometimes, kind of sucks
 
 After figuring out a way to try and solve the TMI problem. We needed to find a way to connect with fellow developers, learners, and mentors in the same as the user so that the code learning journey can be more enjoyable. Or _at least_, make people suffer together.
