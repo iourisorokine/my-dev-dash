@@ -28,7 +28,7 @@ router.get("/feed", checkInterests(), (req, res, next) => {
     1}-${todaysDate.getDate()}T17%3A56%3A53Z`;
   let allInterestsStr = interests.join("+");
   const newsSources =
-    "google-news,ars-technica,techcrunch,techradar,wired,bbc-news,engadget";
+    "google-news,ars-technica,techcrunch,techradar,wired,bbc-news,engadget,reddit-r-all,next-big-future,newsweek,mashable,gruenderszene";
   const requests = {};
   requests.newsCombined = `https://newsapi.org/v2/everything?q=${allInterestsStr}&sources=${newsSources}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY}`;
   if (interests.length > 1) {
