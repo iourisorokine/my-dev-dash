@@ -12,9 +12,9 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/edit", (req, res, next) => {
-  console.log(req.user.interests)
+  console.log(req.user)
   res.render("profile/edit", {
-    user: JSON.stringify(req.user)
+    user: req.user
   });
 });
 
