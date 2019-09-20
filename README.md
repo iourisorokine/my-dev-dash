@@ -4,7 +4,7 @@ Ironhack 1st Full Stack Application
 
 # Team
 
-### [André](https://github.com/itstheandre);
+### [André](https://github.com/itstheandre)
 
 ### [Iouri](https://github.com/iourisorokine)
 
