@@ -12,18 +12,19 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/edit", (req, res, next) => {
+  console.log(req.user.interests)
   res.render("profile/edit", {
-    user: req.user
+    user: JSON.stringify(req.user)
   });
 });
 
 router.post("/edit", uploadCloud.single("imagePath"), (req, res, next) => {
-  const { email, level, githubUrl, bio } = req.body;
-  // const title = req.body.title;
-  // const description = req.body.description;
-  // const author = req.body.author;
-  // const rating = req.body.rating;
-  // const mentorship = req.body.mentorship || "no";
+  const {
+    email,
+    level,
+    githubUrl,
+    bio
+  } = req.body;
   const city = req.body.city.toLowerCase();
   const image = req.user.imagePath;
   const interests = req.body.interests || "javascript";
@@ -32,11 +33,9 @@ router.post("/edit", uploadCloud.single("imagePath"), (req, res, next) => {
   console.log("file url image: ", req.file);
   console.log("user image: ", req.user.imagePath);
 
-  User.findByIdAndUpdate(
-    {
+  User.findByIdAndUpdate({
       _id: user
-    },
-    {
+    }, {
       email,
       city,
       level,
@@ -44,8 +43,7 @@ router.post("/edit", uploadCloud.single("imagePath"), (req, res, next) => {
       interests,
       bio,
       imagePath
-    }
-  )
+    })
     .then(user => {
       //   res.redirect('/books')
       res.redirect(`/profile`); // book._id === req.params.bookId
@@ -54,5 +52,25 @@ router.post("/edit", uploadCloud.single("imagePath"), (req, res, next) => {
       next(err);
     });
 });
+
+// const booleanLang = interests => {
+//   const languages = {
+//     'javascript': false,
+//     'node.js': false,
+//     'java': false,
+//     'python': false,
+//     'bootstrap': false,
+//     'react.js': false,
+//     'php': false,
+//     'ruby': false,
+//     'front-end': false
+//   }
+//   interests.forEach(interest => {
+//     if (interests.includes(interest)) {
+//       languages[interest] = true;
+//     }
+//   })
+//   return languages;
+// }
 
 module.exports = router;

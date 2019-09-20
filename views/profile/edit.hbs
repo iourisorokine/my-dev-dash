@@ -28,7 +28,7 @@
       <div class="signup-interests row">
         <div class="col-sm-5 text-left">
           <p>
-            <input type="checkbox" name="interests" value="javascript" checked>
+            <input type="checkbox" name="interests" value="javascript">
             <label for="level">Javascript</label>
           </p>
           <p>
@@ -96,17 +96,12 @@
   </div>
   {{/with}}
 </div>
-<script src="/javascripts/script.js"></script>
+{{!-- <script>
+  console.log({{{ user.interests }}})
+  let arr = {{{ user.interests }}}
 
-
-
-
-
-
-
-
-
-
-
-
-´
+  let inputsLang = document.querySelectorAll('input[type="checkbox"]');
+  Array.from(inputsLang).forEach(inp => {
+    if (arr.includes(inp.value)) inp.setAttribute('checked');
+  })
+</script> --}}
