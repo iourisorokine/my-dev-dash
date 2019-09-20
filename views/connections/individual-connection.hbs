@@ -4,7 +4,8 @@
     <h1>Hey {{name}}!</h1>
 
 
-    <h3 class="text-center p-5">Like we do every week, we would love to introduce you to someone that we believe you can
+    <h3 class=" presentation text-center p-5">Like we do every week, we would love to introduce you to someone that we
+      believe you can
       certainly learn a lot
       from and with.</h3>
     {{/with}}
@@ -16,8 +17,8 @@
           <img class="profile-pic" src="{{imagePath}}" alt="">
 
           <h3 class="user-name text-center">Name: User <span class="this-capitalize">{{name}}</span></h3>
-          <p>Email: {{email}}</p>
-          <div class="text-center">
+          <p class="user-name">Email: {{email}}</p>
+          <div class=" user-name text-center">
 
             {{#if githubUrl}}
             {{!-- {{#else}} --}}
@@ -26,7 +27,7 @@
             <p>Your new connection hasn't had the chance to add the Github link.</p>
             {{/if}}
           </div>
-          <p>City: <span class="this-capitalize">{{city}}</span></p>
+          <p class="user-name">City: <span class="this-capitalize">{{city}}</span></p>
         </div>
 
         <div class="biz-side col-sm-6">
@@ -37,13 +38,13 @@
           {{!-- {{#if bio}} --}}
           {{#if bio}}
           {{!-- {{#else}} --}}
-          <div class="bio text-center">
-            <p>{{bio}}</p>
+          <div class="user-name bio text-center">
+            <p class="user-name">{{bio}}</p>
           </div>
 
           {{else}}
           <div class="bio text-center">
-            <p>Your new connection still hasn't added any bio.</p>
+            <p class="user-name">Your new connection still hasn't added any bio.</p>
           </div>
           {{/if}}
           {{!-- {{/unless}} --}}

@@ -1,52 +1,72 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<link rel="stylesheet" href="/stylesheets/style.css" />
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="homepage-wrapper">
-  <div class="homepage-center">
-    <h2>Sign Up</h2>
-    <form action="/auth/signup" method="POST" class="form-container">
-      <div class="row py-3">
-        <div class="col-sm-4">
-          <label for="name">Name:</label>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+
+  <div class="homepage-wrapper">
+    <div class="homepage-center">
+      <h2>Sign Up</h2>
+      <form action="/auth/signup" method="POST" class="form-container">
+        <div class="row py-3">
+          <div class="col-sm-4">
+            <label for="name">Name:</label>
+          </div>
+          <div class="col-sm-8">
+            <input id="name" type="text" name="name" placeholder="Your name...">
+          </div>
         </div>
-        <div class="col-sm-8">
-          <input id="name" type="text" name="name" placeholder="Your name...">
+        <div class="row py-3">
+          <div class="col-sm-4">
+            <label for="email">Email:</label>
+          </div>
+          <div class="col-sm-8">
+            <input id="email" type="text" name="email" placeholder="john@doe.com">
+          </div>
         </div>
-      </div>
-      <div class="row py-3">
-        <div class="col-sm-4">
-          <label for="email">Email:</label>
+        <div class="row py-3">
+          <div class="col-sm-4">
+            <label for="password">Password:</label>
+          </div>
+          <div class="col-sm-8">
+            <input id="password" type="password" name="password" placeholder="Your password">
+          </div>
         </div>
-        <div class="col-sm-8">
-          <input id="email" type="text" name="email" placeholder="john@doe.com">
-        </div>
-      </div>
-      <div class="row py-3">
-        <div class="col-sm-4">
-          <label for="password">Password:</label>
-        </div>
-        <div class="col-sm-8">
-          <input id="password" type="password" name="password" placeholder="Your password">
-        </div>
-      </div>
-      {{#if message }}
-      <div class="error-message" style="color:red;">{{ message }}</div>
-      {{/if}}
-      <br>
-      <button class="style-button">Sign up</button>
-      <a class="style-button" href="/auth/github">
-        <i class="fa fa-github" aria-hidden="true"></i>
-        Sign up via Github
-      </a>
-      <p class="account-message">
-        Do you already have an account?
-        <a href="/auth/login">Login</a>
-      </p>
-      </p>
-    </form>
+        {{#if message }}
+        <div class="error-message" style="color:red;">{{ message }}</div>
+        {{/if}}
+        <br>
+        <button class="style-button">Sign up</button>
+        <a class="style-button" href="/auth/github">
+          <i class="fa fa-github" aria-hidden="true"></i>
+          Sign up via Github
+        </a>
+        <p class="account-message">
+          Do you already have an account?
+          <a href="/auth/login">Login</a>
+        </p>
+        </p>
+      </form>
+    </div>
   </div>
-</div>
-<script src="/javascripts/script.js"></script>
+  <script src="/javascripts/script.js"></script>
+
+</body>
+
+</html>

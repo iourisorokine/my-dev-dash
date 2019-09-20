@@ -6,9 +6,6 @@
 html {
   font-size: 10px; }
 
-body {
-  font: 1.4rem "Lucida Grande", Helvetica, Arial, sans-serif; }
-
 a {
   color: #00b7ff; }
 
@@ -64,7 +61,8 @@ nav {
   padding: 1rem 2rem 0 2rem; }
 
 .navbar {
-  padding: 4rem 0; }
+  bottom: 1px;
+  padding: 3.8rem 0; }
 
 .navbar ul {
   background-color: white;
@@ -78,7 +76,7 @@ nav {
   text-decoration: none;
   color: rgba(23, 75, 94, 0.3); }
 
-/* 
+/*
 Login & signup page styles
 */
 .homepage-wrapper {
@@ -117,7 +115,7 @@ Login & signup page styles
 .account-message {
   padding-top: 5rem; }
 
-/* 
+/*
 newsfeed styles
 */
 .news-container {
@@ -316,6 +314,7 @@ newsfeed styles
   text-align: center; }
 
 footer {
+  width: 100vw;
   box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5); }
 
 .footer-content {
@@ -342,9 +341,16 @@ footer {
   .footer-content p {
     font-size: 1.8rem;
     line-height: 2.2rem; }
+  .user-name {
+    font-size: 1.8rem; }
+  .presentation {
+    font-size: 2rem; }
   .connection-content {
     width: 60%; }
   .header-left {
-    padding-left: 5rem; } }
+    padding-left: 5rem; }
+  .style-button {
+    font-size: 1.5rem;
+    padding: 1rem; } }
 
 /*# sourceMappingURL=style.css.map */

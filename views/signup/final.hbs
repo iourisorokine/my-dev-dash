@@ -1,45 +1,65 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<link rel="stylesheet" href="/stylesheets/style.css" />
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="homepage-wrapper">
-  <div class="homepage-center">
-    <form action="/signup/final" method="POST">
-      <h2>Almost over! Last step:</h2>
-      <div class="py-5">
-        <label for="githubUrl">Your Github link (optional):</label>
-        {{#unless githubUrl}}
-        <input id="githubUrl" type="githubUrl" name="githubUrl" value="{{githubUrl}}">
-        {{else}}
-        <input id="github" type="github" name="github" placeholder="Your GitHub Account...">
-        {{/unless}}
-      </div>
-      <div class="py-3">
-        <p>In which city are you?</p>
-        </pIn>
-        <button class="style-button" onclick="chooseCity('berlin')">Berlin</button>
-        <button class="style-button" onclick="chooseCity('paris')">Paris</button>
-        <button class="style-button" onclick="chooseCity('lisbon')">Lisbon</button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
 
-        <div class="py-5" style="display:none;">
-          <label for="city">Other, fill-in:</label>
-          <input id="city" type="text" name="city" placeholder="Your city..." required="true">
+<body>
+
+
+  <div class="homepage-wrapper">
+    <div class="homepage-center">
+      <form action="/signup/final" method="POST">
+        <h2>Almost over! Last step:</h2>
+        <div class="py-5">
+          <label for="githubUrl">Your Github link (optional):</label>
+          {{#unless githubUrl}}
+          <input id="githubUrl" type="githubUrl" name="githubUrl" value="{{githubUrl}}">
+          {{else}}
+          <input id="github" type="github" name="github" placeholder="Your GitHub Account...">
+          {{/unless}}
         </div>
-        {{!-- <button class="style-button" type="submit">Finish</button> --}}
-      </div>
-      {{!-- <div class="shame-div">
+        <div class="py-3">
+          <p>In which city are you?</p>
+          </pIn>
+          <button class="style-button" onclick="chooseCity('berlin')">Berlin</button>
+          <button class="style-button" onclick="chooseCity('paris')">Paris</button>
+          <button class="style-button" onclick="chooseCity('lisbon')">Lisbon</button>
+
+          <div class="py-5" style="display:none;">
+            <label for="city">Other, fill-in:</label>
+            <input id="city" type="text" name="city" placeholder="Your city..." required="true">
+          </div>
+          {{!-- <button class="style-button" type="submit">Finish</button> --}}
+        </div>
+        {{!-- <div class="shame-div">
         <p class="shame">
           We let you skip it, but you've got to promise you will fill it. Deal, <span class="username">{{name}}!</span>
         </p>
       </div> --}}
-    </form>
+      </form>
+    </div>
   </div>
-</div>
 
-<script>
-  const chooseCity = cityStr => {
-    document.getElementById('city').value = cityStr;
-  }
-</script>
+  <script>
+    const chooseCity = cityStr => {
+      document.getElementById('city').value = cityStr;
+    }
+  </script>
+</body>
+
+</html>

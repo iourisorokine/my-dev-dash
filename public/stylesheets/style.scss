@@ -88,7 +88,8 @@ nav {
 // }
 
 .navbar {
-  padding: 4rem 0;
+  bottom: 1px;
+  padding: 3.8rem 0;
 }
 
 .navbar ul {
@@ -106,7 +107,7 @@ nav {
   color: rgba(23, 75, 94, 0.3);
 }
 
-/* 
+/*
 Login & signup page styles
 */
 .homepage-wrapper {
@@ -156,7 +157,7 @@ Login & signup page styles
   padding-top: 5rem;
 }
 
-/* 
+/*
 newsfeed styles
 */
 
@@ -407,6 +408,7 @@ newsfeed styles
 }
 
 footer {
+  width: 100vw;
   box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5);
 }
 
@@ -445,6 +447,14 @@ footer {
     line-height: 2.2rem;
   }
 
+  .user-name {
+    font-size: 1.8rem;
+  }
+
+  .presentation {
+    font-size: 2rem;
+  }
+
   .connection-content {
     width: 60%;
     // display: flex;
@@ -454,4 +464,15 @@ footer {
   .header-left {
     padding-left: 5rem;
   }
+
+  .style-button {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 720px) {
+  // footer {
+  //   width: 100vw;
+  // }
 }
