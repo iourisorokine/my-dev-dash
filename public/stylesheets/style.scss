@@ -233,7 +233,8 @@ newsfeed styles
 }
 
 .connection-photo {
-  width: 15rem;
+  // width: 15rem;
+  min-width: 15rem;
   height: auto;
   // width: 25%;
 }
@@ -394,9 +395,6 @@ newsfeed styles
 
 .edit-profile {
   // margin-bottom: 15rem;
-  display: inline-block;
-  // width: 20rem;
-  text-align: center;
   padding: 1rem 2rem;
   margin: 5rem;
 }
@@ -422,12 +420,34 @@ footer {
   font-size: 1rem;
 }
 
+.image-photo {
+  width: 100%;
+}
+
 @media (max-width: 420px) {
-  .user-header {
-    padding-left: 0;
+  html {
+    font-size: 8px;
   }
+  // .user-header {
+  //   padding-left: 0;
+  // }
 
   .header-welcome {
     display: none;
+  }
+
+  .footer-content p {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+  }
+
+  .connection-content {
+    width: 60%;
+    // display: flex;
+    // align-items: center;
+  }
+
+  .header-left {
+    padding-left: 5rem;
   }
 }

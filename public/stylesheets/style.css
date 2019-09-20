@@ -182,7 +182,7 @@ newsfeed styles
   padding: 2rem; }
 
 .connection-photo {
-  width: 15rem;
+  min-width: 15rem;
   height: auto; }
 
 .connection-pic {
@@ -306,8 +306,6 @@ newsfeed styles
   line-height: 3rem; }
 
 .edit-profile {
-  display: inline-block;
-  text-align: center;
   padding: 1rem 2rem;
   margin: 5rem; }
 
@@ -328,10 +326,20 @@ footer {
   line-height: 1rem;
   font-size: 1rem; }
 
+.image-photo {
+  width: 100%; }
+
 @media (max-width: 420px) {
-  .user-header {
-    padding-left: 0; }
+  html {
+    font-size: 8px; }
   .header-welcome {
-    display: none; } }
+    display: none; }
+  .footer-content p {
+    font-size: 1.8rem;
+    line-height: 2.2rem; }
+  .connection-content {
+    width: 60%; }
+  .header-left {
+    padding-left: 5rem; } }
 
 /*# sourceMappingURL=style.css.map */
