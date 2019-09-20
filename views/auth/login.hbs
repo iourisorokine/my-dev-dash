@@ -27,20 +27,36 @@
     <div class="homepage-center">
       <h2>Login</h2>
       <form action="/auth/login" method="POST" id="form-container">
-        <label for="email">Email:</label>
-        <input id="email" type="text" name="email" placeholder="email">
-        <label for="password">Password:</label>
-        <input id="password" type="password" name="password" placeholder="Your password">
-        <br>
+        <div class="row py-3">
+          <div class="col-sm-4">
+            <label for="email">Email:</label>
+          </div>
+          <div class="col-sm-8">
+            <input id="email" type="text" name="email" placeholder="email">
+          </div>
+        </div>
+        <div class="row py-3">
+          <div class="col-sm-4">
+            <label for="password">Password:</label>
+          </div>
+          <div class="col-sm-8">
+            <input id="password" type="password" name="password" placeholder="Your password">
+          </div>
+        </div>
         {{#if message }}
         <div class="error-message">{{ message }}</div>
         {{/if}}
-        <br>
-        <button class="style-button">Login</button>
-        <a class="style-button" href="/auth/github">
-          <i class="fa fa-github" aria-hidden="true"></i>
-          Login via Github
-        </a>
+        <div class="row text-center py-3 px-3">
+
+          <div class="col-sm-6 text-center">
+            <button type="submit" class="style-button">Login</button>
+          </div>
+          <div class="col-sm-6 text-center">
+            <a class="style-button-2" href="/auth/github">
+              <i class="fa fa-github" aria-hidden="true"></i> Login via Github
+            </a>
+          </div>
+        </div>
         <p class="account-message">
           Don't have an account yet?
           <a href="/auth/signup">Signup</a>

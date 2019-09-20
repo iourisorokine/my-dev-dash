@@ -6,6 +6,9 @@
 html {
   font-size: 10px; }
 
+body {
+  font: 1.4rem "Lucida Grande", Helvetica, Arial, sans-serif; }
+
 a {
   color: #00b7ff; }
 
@@ -102,6 +105,17 @@ Login & signup page styles
   margin: 1rem;
   padding: 1rem 2rem;
   width: 13rem;
+  text-decoration: none;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.7);
+  border: 0.1rem solid black;
+  box-shadow: 0.4rem 0.4rem rgba(0, 0, 0, 0.7); }
+
+.style-button-2 {
+  margin: 1rem;
+  width: 17rem;
+  display: inline-block;
+  padding: 1rem 0.5rem;
   text-decoration: none;
   background-color: white;
   color: rgba(0, 0, 0, 0.7);
