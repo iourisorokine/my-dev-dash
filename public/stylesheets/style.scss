@@ -1,37 +1,499 @@
+// * {
+//   padding: 0;
+//   margin: 0;
+//   box-sizing: border-box;
+// }
+
+// html {
+//   font-size: 10px;
+// }
+
+// body {
+//   // font: 1.4rem "Lucida Grande", Helvetica, Arial, sans-serif;
+// }
+
+// a {
+//   color: #00b7ff;
+// }
+
+// h2 {
+//   font-size: 3rem;
+//   padding: 2rem 0;
+// }
+
+// h3 {
+//   font-size: 2.2rem;
+// }
+
+// .page-wrapper {
+//   min-height: 75vh;
+//   max-width: 800px;
+//   margin: 0 auto;
+// }
+
+// /* sticky position not working */
+// .user-header {
+//   position: sticky;
+//   top: 0;
+//   height: 10rem;
+//   padding: 0 5rem;
+//   background-color: white;
+//   z-index: 10;
+//   display: flex;
+//   justify-content: space-between;
+//   color: #174b5e;
+//   box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5);
+// }
+
+// .signup-top {
+//   display: flex;
+// }
+
+// .profile-pic {
+//   width: 8rem;
+//   height: auto;
+//   border-radius: 50%;
+// }
+
+// nav {
+//   width: 16rem;
+// }
+
+// .header-left {
+//   height: 10rem;
+//   display: flex;
+//   align-items: center;
+// }
+
+// .header-welcome,
+// .nav-link-custom {
+//   color: #174b5e;
+//   font-family: "Russo One", sans-serif;
+//   text-decoration: none;
+//   font-size: 2rem;
+// }
+
+// .header-welcome {
+//   padding: 1rem 2rem 0 2rem;
+// }
+
+// // .nav-link-custom {
+// //   position: fixed;
+// // }
+
+// // #navbarSupportedContent1 {
+// //   position: fixed;
+// //   top: 6rem;
+// //   width: 10rem;
+// // }
+
+// .navbar {
+//   bottom: 1px;
+//   padding: 3.8rem 0;
+// }
+
+// .navbar ul {
+//   background-color: white;
+//   padding: 1rem;
+//   box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5);
+// }
+
+// .navbar ul li {
+//   padding: 1rem;
+// }
+
+// .nav-link-custom:hover {
+//   text-decoration: none;
+//   color: rgba(23, 75, 94, 0.3);
+// }
+
+// /*
+// Login & signup page styles
+// */
+// .homepage-wrapper {
+//   height: 100vh;
+//   width: 100vw;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   background-image: url("../images/cover-landing-2.jpeg");
+//   background-size: cover;
+// }
+
+// .homepage-center {
+//   color: black;
+//   text-align: center;
+//   padding: 5rem;
+//   background-color: rgba(255, 255, 255, 0.7);
+//   box-shadow: 0.8rem 0.8rem rgba(255, 255, 255, 0.4);
+// }
+
+// // .signup-wrapper {
+// //   display: flex;
+// //   justify-content: center;
+// // }
+
+// .homepage-wrapper h1 {
+//   font-size: 4rem;
+// }
+
+// .style-button {
+//   margin: 1rem;
+//   padding: 1rem 2rem;
+//   width: 13rem;
+//   text-decoration: none;
+//   background-color: white;
+//   color: rgba(0, 0, 0, 0.7);
+//   border: 0.1rem solid black;
+//   box-shadow: 0.4rem 0.4rem rgba(0, 0, 0, 0.7);
+// }
+
+// .style-button:hover {
+//   background-color: black;
+//   color: white;
+// }
+
+// .account-message {
+//   padding-top: 5rem;
+// }
+
+// /*
+// newsfeed styles
+// */
+
+// .news-container {
+//   display: flex;
+//   flex-wrap: wrap;
+//   align-items: center;
+//   padding: 1rem;
+//   background-color: white;
+//   box-shadow: 0.4rem 0.4rem 0.2rem rgba(23, 75, 94, 0.3);
+// }
+
+// .news-container-left {
+//   flex: 5;
+//   min-width: 30rem;
+//   text-decoration: none;
+//   color: black;
+// }
+
+// .news-container-left:hover {
+//   transition: ease;
+//   transition-duration: 0.5s;
+//   background-color: rgba(23, 75, 94, 0.2);
+// }
+
+// .news-container-right {
+//   padding: 1rem;
+//   flex: 2;
+// }
+
+// .news-container-right img {
+//   width: 15rem;
+//   height: auto;
+// }
+
+// .btn-pin {
+//   flex: 1;
+//   width: 7rem;
+//   height: 7rem;
+//   color: #174b5e;
+//   margin: 1rem;
+//   border: 0.1rem solid #174b5e;
+//   box-shadow: 0.4rem 0.4rem 0.2rem rgba(23, 75, 94, 0.3);
+// }
+
+// .btn-pin:hover {
+//   transition: ease;
+//   transition-duration: 0.5s;
+//   transform: scale(0.9);
+//   color: white;
+//   background-color: #174b5e;
+// }
+
+// .connections-page {
+//   display: flex;
+//   justify-content: center;
+//   align-self: center;
+//   padding: 4rem;
+// }
+
+// .content-card {
+//   margin: 2.2rem auto;
+// }
+
+// .content-container {
+//   box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5);
+// }
+
+// .connection-card {
+//   display: flex;
+//   justify-content: space-between;
+//   max-width: 50rem;
+//   padding: 2rem;
+// }
+
+// .connection-photo {
+//   // width: 15rem;
+//   min-width: 15rem;
+//   height: auto;
+//   // width: 25%;
+// }
+
+// .connection-pic {
+//   height: 100%;
+//   width: 100%;
+// }
+
+// .connection-content {
+//   padding: 1rem;
+// }
+
+// .connection-name {
+//   color: black;
+//   font-size: 3rem;
+//   text-decoration: none;
+//   text-transform: capitalize;
+// }
+
+// .connection-city,
+// .connection-interests {
+//   font-size: 2rem;
+//   padding: 0.8rem 0;
+// }
+
+// .form {
+//   display: flex;
+//   justify-content: center;
+// }
+
+// .add-form {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   padding-bottom: 5rem;
+// }
+
+// .form-button {
+//   margin: 0 auto;
+// }
+
+// /* .form-container {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: flex-start;
+// }
+//  */
+// .signup-form-input {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: flex-start;
+// }
+
+// .signup-h2 {
+//   display: inline-block;
+//   padding: 0;
+//   margin: 0 auto;
+// }
+
+// .signup-form-element {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .form-element {
+//   padding: 1em 0;
+// }
+
+// .username {
+//   text-transform: capitalize;
+// }
+
+// .shame-div {
+//   position: fixed;
+//   bottom: 0;
+//   width: 100vw;
+//   padding: 1rem;
+//   margin: 0 auto;
+//   display: flex;
+//   justify-content: center;
+// }
+
+// // .profile-page {
+// //   padding: 3rem;
+// //   display: flex;
+// //   flex-direction: column;
+// // }
+
+// .title {
+//   margin: 0 auto;
+//   padding: 5rem;
+// }
+
+// .this-capitalize {
+//   text-transform: capitalize;
+// }
+
+// // Profile Part
+// .profile-card {
+//   display: flex;
+//   flex-wrap: wrap;
+//   // flex-direction: column;
+//   // align-items: center;
+//   // justify-content: space-between;
+//   max-width: 70rem; //80vw;
+//   // height: 80vh;
+// }
+
+// .personal-profile {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: left;
+//   width: 50%;
+//   min-width: 300px;
+//   align-items: center;
+//   padding: 2rem;
+// }
+
+// .biz-side {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   width: 50%;
+//   min-width: 300px;
+//   padding: 2rem;
+// }
+
+// .upload-form-container {
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// .profile {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+// .user-profile {
+//   display: flex;
+//   justify-content: space-around;
+//   // align-items: center;
+// }
+
+// .main-profile-structure {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+// .user-name {
+//   padding: 0;
+//   line-height: 3rem;
+// }
+
+// .edit-profile {
+//   // margin-bottom: 15rem;
+//   padding: 1rem 2rem;
+//   margin: 5rem;
+// }
+
+// .text-center {
+//   text-align: center;
+// }
+
+// footer {
+//   width: 100vw;
+//   box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5);
+// }
+
+// .footer-content {
+//   width: 100vw;
+//   padding: 2rem;
+//   max-width: 800px;
+//   margin: auto;
+// }
+
+// .footer-content p {
+//   color: #999;
+//   line-height: 1rem;
+//   font-size: 1rem;
+// }
+
+// .image-photo {
+//   width: 100%;
+// }
+
+// @media (max-width: 420px) {
+//   // html {
+//   //   font-size: 8px;
+//   // }
+//   // // .user-header {
+//   // //   padding-left: 0;
+//   // // }
+
+//   // .header-welcome {
+//   //   display: none;
+//   // }
+
+//   // .footer-content p {
+//   //   font-size: 1.8rem;
+//   //   line-height: 2.2rem;
+//   // }
+
+//   // .user-name {
+//   //   font-size: 2rem;
+//   // }
+
+//   // .presentation {
+//   //   font-size: 2rem;
+//   // }
+
+//   // .connection-content {
+//   //   width: 60%;
+//   //   // display: flex;
+//   //   // align-items: center;
+//   // }
+
+//   // .header-left {
+//   //   padding-left: 5rem;
+//   // }
+// }
+
+// @media (max-width: 720px) {
+//   // footer {
+//   //   width: 100vw;
+//   // }
+// }
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-
 html {
   font-size: 10px;
 }
-
 body {
   font: 1.4rem "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #00b7ff;
 }
-
 h2 {
   font-size: 3rem;
   padding: 2rem 0;
 }
-
 h3 {
   font-size: 2.2rem;
 }
-
 .page-wrapper {
   min-height: 75vh;
   max-width: 800px;
   margin: 0 auto;
 }
-
-/* sticky position not working */
 .user-header {
   position: sticky;
   top: 0;
@@ -44,68 +506,55 @@ h3 {
   color: #174b5e;
   box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5);
 }
-
 .signup-top {
   display: flex;
 }
-
 .profile-pic {
   width: 8rem;
   height: auto;
   border-radius: 50%;
 }
-
 nav {
   width: 16rem;
 }
-
 .header-left {
   height: 10rem;
   display: flex;
   align-items: center;
 }
-
 .header-welcome,
 .nav-link-custom {
   color: #174b5e;
-  font-family: "Russo One", sans-serif;
+  font-family: "Lato", sans-serif;
   text-decoration: none;
   font-size: 2rem;
 }
-
 .header-welcome {
   padding: 1rem 2rem 0 2rem;
 }
-
 // .nav-link-custom {
 //   position: fixed;
 // }
-
 // #navbarSupportedContent1 {
 //   position: fixed;
 //   top: 6rem;
 //   width: 10rem;
 // }
-
 .navbar {
   padding: 4rem 0;
 }
-
 .navbar ul {
   background-color: white;
   padding: 1rem;
   box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5);
 }
-
 .navbar ul li {
   padding: 1rem;
 }
-
 .nav-link-custom:hover {
   text-decoration: none;
   color: rgba(23, 75, 94, 0.3);
 }
-
 /* 
 Login & signup page styles
 */
@@ -118,7 +567,6 @@ Login & signup page styles
   background-image: url("../images/cover-landing-2.jpeg");
   background-size: cover;
 }
-
 .homepage-center {
   color: black;
   text-align: center;
@@ -126,16 +574,13 @@ Login & signup page styles
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0.8rem 0.8rem rgba(255, 255, 255, 0.4);
 }
-
 // .signup-wrapper {
 //   display: flex;
 //   justify-content: center;
 // }
-
 .homepage-wrapper h1 {
   font-size: 4rem;
 }
-
 .style-button {
   margin: 1rem;
   padding: 1rem 2rem;
@@ -146,20 +591,16 @@ Login & signup page styles
   border: 0.1rem solid black;
   box-shadow: 0.4rem 0.4rem rgba(0, 0, 0, 0.7);
 }
-
 .style-button:hover {
   background-color: black;
   color: white;
 }
-
 .account-message {
   padding-top: 5rem;
 }
-
-/* 
+/*
 newsfeed styles
 */
-
 .news-container {
   display: flex;
   flex-wrap: wrap;
@@ -168,32 +609,30 @@ newsfeed styles
   background-color: white;
   box-shadow: 0.4rem 0.4rem 0.2rem rgba(23, 75, 94, 0.3);
 }
-
 .news-container-left {
   flex: 5;
-  min-width: 30rem;
+  min-width: 25rem;
   text-decoration: none;
   color: black;
 }
-
 .news-container-left:hover {
   transition: ease;
   transition-duration: 0.5s;
   background-color: rgba(23, 75, 94, 0.2);
 }
-
 .news-container-right {
   padding: 1rem;
-  flex: 2;
+  flex: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
 .news-container-right img {
-  width: 15rem;
+  width: 50%;
+  min-width: 16rem;
   height: auto;
 }
-
 .btn-pin {
-  flex: 1;
   width: 7rem;
   height: 7rem;
   color: #174b5e;
@@ -201,7 +640,6 @@ newsfeed styles
   border: 0.1rem solid #174b5e;
   box-shadow: 0.4rem 0.4rem 0.2rem rgba(23, 75, 94, 0.3);
 }
-
 .btn-pin:hover {
   transition: ease;
   transition-duration: 0.5s;
@@ -209,74 +647,60 @@ newsfeed styles
   color: white;
   background-color: #174b5e;
 }
-
 .connections-page {
   display: flex;
   justify-content: center;
   align-self: center;
   padding: 4rem;
 }
-
 .content-card {
   margin: 2.2rem auto;
 }
-
 .content-container {
   box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5);
 }
-
 .connection-card {
   display: flex;
   justify-content: space-between;
   max-width: 50rem;
   padding: 2rem;
 }
-
 .connection-photo {
-  // width: 15rem;
-  min-width: 15rem;
+  width: 15rem;
   height: auto;
   // width: 25%;
 }
-
 .connection-pic {
   height: 100%;
   width: 100%;
 }
-
 .connection-content {
   padding: 1rem;
 }
-
 .connection-name {
   color: black;
   font-size: 3rem;
   text-decoration: none;
   text-transform: capitalize;
 }
-
 .connection-city,
 .connection-interests {
   font-size: 2rem;
   padding: 0.8rem 0;
 }
-
 .form {
   display: flex;
   justify-content: center;
 }
-
 .add-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-bottom: 5rem;
 }
-
 .form-button {
   margin: 0 auto;
 }
-
 /* .form-container {
   display: flex;
   flex-direction: column;
@@ -289,27 +713,22 @@ newsfeed styles
   justify-content: space-between;
   align-items: flex-start;
 }
-
 .signup-h2 {
   display: inline-block;
   padding: 0;
   margin: 0 auto;
 }
-
 .signup-form-element {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .form-element {
   padding: 1em 0;
 }
-
 .username {
   text-transform: capitalize;
 }
-
 .shame-div {
   position: fixed;
   bottom: 0;
@@ -319,22 +738,18 @@ newsfeed styles
   display: flex;
   justify-content: center;
 }
-
 // .profile-page {
 //   padding: 3rem;
 //   display: flex;
 //   flex-direction: column;
 // }
-
 .title {
   margin: 0 auto;
   padding: 5rem;
 }
-
 .this-capitalize {
   text-transform: capitalize;
 }
-
 // Profile Part
 .profile-card {
   display: flex;
@@ -345,7 +760,6 @@ newsfeed styles
   max-width: 70rem; //80vw;
   // height: 80vh;
 }
-
 .personal-profile {
   display: flex;
   flex-direction: column;
@@ -355,7 +769,6 @@ newsfeed styles
   align-items: center;
   padding: 2rem;
 }
-
 .biz-side {
   display: flex;
   flex-direction: column;
@@ -365,12 +778,10 @@ newsfeed styles
   min-width: 300px;
   padding: 2rem;
 }
-
 .upload-form-container {
   display: flex;
   flex-direction: column;
 }
-
 .profile {
   display: flex;
   flex-direction: column;
@@ -381,73 +792,42 @@ newsfeed styles
   justify-content: space-around;
   // align-items: center;
 }
-
 .main-profile-structure {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .user-name {
   padding: 0;
   line-height: 3rem;
 }
-
 .edit-profile {
   // margin-bottom: 15rem;
+  display: inline-block;
+  // width: 20rem;
+  text-align: center;
   padding: 1rem 2rem;
   margin: 5rem;
 }
-
 .text-center {
   text-align: center;
 }
-
 footer {
   box-shadow: 0.5em 0.5em 2em rgba(119, 119, 119, 0.5);
 }
-
 .footer-content {
   width: 100vw;
   padding: 2rem;
   max-width: 800px;
   margin: auto;
 }
-
 .footer-content p {
   color: #999;
   line-height: 1rem;
   font-size: 1rem;
 }
-
-.image-photo {
-  width: 100%;
-}
-
-@media (max-width: 420px) {
-  html {
-    font-size: 8px;
-  }
-  // .user-header {
-  //   padding-left: 0;
-  // }
-
+@media (max-width: 350px) {
   .header-welcome {
     display: none;
-  }
-
-  .footer-content p {
-    font-size: 1.8rem;
-    line-height: 2.2rem;
-  }
-
-  .connection-content {
-    width: 60%;
-    // display: flex;
-    // align-items: center;
-  }
-
-  .header-left {
-    padding-left: 5rem;
   }
 }
