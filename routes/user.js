@@ -30,12 +30,12 @@ router.get("/feed", checkInterests(), (req, res, next) => {
   const newsSources =
     "google-news,ars-technica,techcrunch,techradar,wired,bbc-news,engadget,reddit-r-all,next-big-future,newsweek,mashable,gruenderszene";
   const requests = {};
-  requests.newsCombined = `https://newsapi.org/v2/everything?q=${allInterestsStr}&sources=${newsSources}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY}`;
+  requests.newsCombined = `https://newsapi.org/v2/everything?q=${allInterestsStr}&sources=${newsSources}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY2}`;
   if (interests.length > 1) {
     interests.forEach((interest, index) => {
       requests[
         `news${index + 1}`
-      ] = `https://newsapi.org/v2/everything?q=${interest}&sources=${newsSources}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY}`;
+      ] = `https://newsapi.org/v2/everything?q=${interest}&sources=${newsSources}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY2}`;
     });
   }
   const eventsCall = `https://www.eventbriteapi.com/v3/events/search/?q=${interests[0]}&location.address=${req.user.city}&location.within=30km&start_date.range_start=${todaysDateStr}&start_date.range_end=2019-12-31T17%3A56%3A53Z&token=${process.env.EVENTBRITE_API_TOKEN}`;
