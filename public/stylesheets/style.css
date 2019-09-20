@@ -111,6 +111,17 @@ Login & signup page styles
   border: 0.1rem solid black;
   box-shadow: 0.4rem 0.4rem rgba(0, 0, 0, 0.7); }
 
+.style-button-2 {
+  margin: 1rem;
+  width: 17rem;
+  display: inline-block;
+  padding: 1rem 0.5rem;
+  text-decoration: none;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.7);
+  border: 0.1rem solid black;
+  box-shadow: 0.4rem 0.4rem rgba(0, 0, 0, 0.7); }
+
 .style-button:hover {
   background-color: black;
   color: white; }
