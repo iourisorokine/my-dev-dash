@@ -8,12 +8,12 @@
     </a>
     <div class="news-container-right">
       <img src="{{urlToImage}}" alt="illustration">
+      {{#if pinned}}
+      <button class="btn-pin" onclick="removeElement(event, {{@index}})">Remove this</button>
+      {{else}}
+      <button class="btn-pin" onclick="pinElement(event, {{@index}})">Pin this</button>
+      {{/if}}
     </div>
-    {{#if pinned}}
-    <button class="btn-pin" onclick="removeElement(event, {{@index}})">Remove this</button>
-    {{else}}
-    <button class="btn-pin" onclick="pinElement(event, {{@index}})">Pin this</button>
-    {{/if}}
   </div>
   {{/each}}
 </div>

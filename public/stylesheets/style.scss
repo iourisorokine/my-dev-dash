@@ -68,7 +68,7 @@ nav {
 .header-welcome,
 .nav-link-custom {
   color: #174b5e;
-  font-family: "Russo One", sans-serif;
+  font-family: "Lato", sans-serif;
   text-decoration: none;
   font-size: 2rem;
 }
@@ -171,7 +171,7 @@ newsfeed styles
 
 .news-container-left {
   flex: 5;
-  min-width: 30rem;
+  min-width: 25rem;
   text-decoration: none;
   color: black;
 }
@@ -184,16 +184,19 @@ newsfeed styles
 
 .news-container-right {
   padding: 1rem;
-  flex: 2;
+  flex: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .news-container-right img {
-  width: 15rem;
+  width: 50%;
+  min-width: 16rem;
   height: auto;
 }
 
 .btn-pin {
-  flex: 1;
   width: 7rem;
   height: 7rem;
   color: #174b5e;
@@ -423,10 +426,6 @@ footer {
 }
 
 @media (max-width: 350px) {
-  .user-header {
-    padding-left: 0;
-  }
-
   .header-welcome {
     display: none;
   }
