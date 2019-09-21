@@ -133,6 +133,10 @@ Login & signup page styles
   background-color: black;
   color: white; }
 
+.style-button-2:hover {
+  background-color: black;
+  color: white; }
+
 .account-message {
   padding-top: 5rem; }
 

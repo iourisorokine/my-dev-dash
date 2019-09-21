@@ -26,7 +26,7 @@ passport.use(
               githubId: profile.id,
               name: profile.displayName,
               email: profile.login,
-              city: profile._json.location.toLowerCase(),
+              city: profile._json.location.toLowerCase() || 'berlin',
               level: 'beginner',
               githubUrl: profile.profileUrl,
               imagePath: profile._json.avatar_url,

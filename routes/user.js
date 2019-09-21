@@ -24,11 +24,13 @@ router.get("/feed", checkInterests(), (req, res, next) => {
   let eventsList = [];
   const interests = req.user.interests;
   let todaysDate = new Date();
+  let locationAddress = (req.user.city) ? `&location.address=${req.user.city}&location.within=30km` : "";
   let todaysDateStr = `${todaysDate.getFullYear()}-${todaysDate.getMonth() +
     1}-${todaysDate.getDate()}T17%3A56%3A53Z`;
   let allInterestsStr = interests.join("+");
   const newsSources =
-    "google-news,ars-technica,techcrunch,techradar,wired,bbc-news,engadget,reddit-r-all,next-big-future,newsweek,mashable,gruenderszene";
+    "ars-technica,techcrunch,techradar,wired,engadget,reddit-r-all,next-big-future,mashable,gruenderszene";
+  // additional sources: google-news,newsweek,bbc-news
   const requests = {};
   requests.newsCombined = `https://newsapi.org/v2/everything?q=${allInterestsStr}&sources=${newsSources}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY2}`;
   if (interests.length > 1) {
@@ -38,14 +40,15 @@ router.get("/feed", checkInterests(), (req, res, next) => {
       ] = `https://newsapi.org/v2/everything?q=${interest}&sources=${newsSources}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY2}`;
     });
   }
-  const eventsCall = `https://www.eventbriteapi.com/v3/events/search/?q=${interests[0]}&location.address=${req.user.city}&location.within=30km&start_date.range_start=${todaysDateStr}&start_date.range_end=2019-12-31T17%3A56%3A53Z&token=${process.env.EVENTBRITE_API_TOKEN}`;
+  const eventsCall = `https://www.eventbriteapi.com/v3/events/search/?q=${interests[0]}${locationAddress}&start_date.range_start=${todaysDateStr}&start_date.range_end=2019-12-31T17%3A56%3A53Z&token=${process.env.EVENTBRITE_API_TOKEN}`;
+
+  // https://www.eventbriteapi.com/v3/events/search/?q=javascript&location.address=&location.within=30km&start_date.range_start=2019-09-15T17%3A56%3A53Z&start_date.range_end=2019-12-31T17%3A56%3A53Z&token=SA2FSDVWX2F7NYE4PBBE
 
   let promises = Object.values(requests).map(val => axios.get(val));
 
   axios.get(eventsCall)
     .then(response => {
       const eventsResp = response.data.events;
-
       if (eventsResp.length) {
         for (let i = 0; i < eventsResp.length; i++) {
           let eToPush = formatTheEvent(eventsResp[i]);
@@ -58,7 +61,7 @@ router.get("/feed", checkInterests(), (req, res, next) => {
           let counter = 0;
           if (eventsList.length) {
             newsList.forEach((item, index) => {
-              if (index % 5 === 0 && counter < 5) {
+              if (index % 5 === 0 && counter < eventsList.length) {
                 newsList.splice(index, 0, eventsList[counter]);
                 counter++
               }
@@ -134,11 +137,13 @@ router.post("/pinned/remove/:itemNb", (req, res, next) => {
 
 const formatNews = (newsListToFormat, listOfPinnedItems) => {
   newsListToFormat.forEach(item => {
-    if (item.content) item.content = item.content.slice(0, item.content.length - 20) + ' ...(see more)';
-    item.contentId = `${item.title}${item.publishedAt}`;
-    if (!item.urlToImage) item.urlToImage = '/images/default-news-pic.jpeg';
-    item.publishedAt = item.publishedAt.slice(0, 10);
-    if (checkContentId(item, listOfPinnedItems)) item.pinned = true;
+    if (item) {
+      if (item.content) item.content = item.content.slice(0, item.content.length - 20) + ' ...(see more)';
+      item.contentId = `${item.title}${item.publishedAt}`;
+      if (!item.urlToImage) item.urlToImage = '/images/default-news-pic.jpeg';
+      item.publishedAt = item.publishedAt.slice(0, 10);
+      if (checkContentId(item, listOfPinnedItems)) item.pinned = true;
+    }
   })
   return newsListToFormat;
 }
@@ -160,8 +165,8 @@ const formatTheEvent = rawEventData => {
   eToPush.description = rawEventData.description.text;
   eToPush.url = rawEventData.url;
   eToPush.urlToImage = (rawEventData.logo) ? rawEventData.logo.url : '/images/default-news-pic.jpeg';
-  eToPush.content = `${rawEventData.summary.slice(0,200)} ...(see more)`,
-    eToPush.publishedAt = rawEventData.start.local;
+  eToPush.content = `${rawEventData.summary.slice(0,200)} ...(see more)` || '';
+  eToPush.publishedAt = rawEventData.start.local;
   eToPush.source.event = true;
   eToPush.contentId = `${rawEventData.name.text}${rawEventData.published}`
 
