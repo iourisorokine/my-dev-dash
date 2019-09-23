@@ -19,7 +19,7 @@ const checkInterests = () => {
 
 // manages the nees feed from the news API
 router.get("/feed", checkInterests(), (req, res, next) => {
-  console.log(req.user.city);
+  console.log(req.user);
   newsList = [];
   let eventsList = [];
   const interests = req.user.interests;
