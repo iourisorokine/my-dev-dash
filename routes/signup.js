@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/User");
 
 router.get("/advanced", (req, res, next) => {
+  console.log("here");
   res.render("signup/advanced", {
     user: req.user,
     layout: false
@@ -10,9 +11,10 @@ router.get("/advanced", (req, res, next) => {
 });
 
 router.post("/advanced", (req, res, next) => {
+  console.log("hallo");
   const {
     level,
-    interests,
+    interests
     // githubUrl,
     // city
   } = req.body;
@@ -21,15 +23,13 @@ router.post("/advanced", (req, res, next) => {
   // const mentorship = req.body.mentorship || "no";
   const user = req.user._id;
 
-  User.findByIdAndUpdate({
-      _id: user
-    }, {
-      level,
-      interests,
-      // mentorship,
-      // githubUrl,
-      // city
-    })
+  User.findByIdAndUpdate(user, {
+    level,
+    interests
+    // mentorship,
+    // githubUrl,
+    // city
+  })
     .then(user => {
       //   res.redirect('/books')
       res.redirect("/signup/final"); // book._id === req.params.bookId
@@ -40,7 +40,8 @@ router.post("/advanced", (req, res, next) => {
 });
 
 router.get("/final", (req, res, next) => {
-  console.log(req.params);
+  console.log("final");
+  // console.log(req.params);
   res.render("signup/final", {
     user: req.user,
     layout: false
@@ -48,23 +49,25 @@ router.get("/final", (req, res, next) => {
 });
 
 router.post("/final", (req, res, next) => {
-  const {
-    githubUrl,
-    city
-  } = req.body;
-  const user = req.user._id;
-  User.findByIdAndUpdate({
-      _id: user
-    }, {
-      githubUrl,
-      city
+  console.log("here in final");
+  const { githubUrl, city } = req.body;
+
+  User.findByIdAndUpdate(req.user._id, { ...req.body })
+    .then(() => {
+      res.redirect("/user/feed");
     })
-    .then(user => {
-      res.redirect(`/user/feed`);
-    })
-    .catch(err => {
-      next(err);
-    });
-})
+    .catch(err => console.log(err));
+
+  // User.findByIdAndUpdate(user, {
+  //   githubUrl,
+  //   city
+  // })
+  //   .then(user => {
+  //     res.redirect(`/user/feed`);
+  //   })
+  //   .catch(err => {
+  //     next(err);
+  //   });
+});
 
 module.exports = router;

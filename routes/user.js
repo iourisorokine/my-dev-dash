@@ -20,11 +20,14 @@ const checkInterests = () => {
 // manages the nees feed from the news API
 router.get("/feed", checkInterests(), (req, res, next) => {
   console.log(req.user);
-  newsList = [];
+  let newsList = [];
   let eventsList = [];
   const interests = req.user.interests;
+  console.log(interests);
   let todaysDate = new Date();
-  let locationAddress = (req.user.city) ? `&location.address=${req.user.city}&location.within=30km` : "";
+  let locationAddress = req.user.city
+    ? `&location.address=${req.user.city}&location.within=30km`
+    : "";
   let todaysDateStr = `${todaysDate.getFullYear()}-${todaysDate.getMonth() +
     1}-${todaysDate.getDate()}T17%3A56%3A53Z`;
   let allInterestsStr = interests.join("+");
@@ -40,43 +43,47 @@ router.get("/feed", checkInterests(), (req, res, next) => {
       ] = `https://newsapi.org/v2/everything?q=${interest}&sources=${newsSources}&language=en&from=${todaysDate}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY2}`;
     });
   }
-  const eventsCall = `https://www.eventbriteapi.com/v3/events/search/?q=${interests[0]}${locationAddress}&start_date.range_start=${todaysDateStr}&start_date.range_end=2019-12-31T17%3A56%3A53Z&token=${process.env.EVENTBRITE_API_TOKEN}`;
+  const eventsCall = `https://www.eventbriteapi.com/v3/events/search/?q=${interests[0]}${locationAddress}&start_date.range_start=${todaysDateStr}&start_date.range_end=2019-12-31T17%3A56%3A53Z&token=${process.env.EVENTBRITE_API_TOKEN2}`;
 
   // https://www.eventbriteapi.com/v3/events/search/?q=javascript&location.address=&location.within=30km&start_date.range_start=2019-09-15T17%3A56%3A53Z&start_date.range_end=2019-12-31T17%3A56%3A53Z&token=SA2FSDVWX2F7NYE4PBBE
 
   let promises = Object.values(requests).map(val => axios.get(val));
-
-  axios.get(eventsCall)
-    .then(response => {
-      const eventsResp = response.data.events;
-      if (eventsResp.length) {
-        for (let i = 0; i < eventsResp.length; i++) {
-          let eToPush = formatTheEvent(eventsResp[i]);
-          eventsList.push(eToPush);
-        }
-      }
-      Promise.all([...promises])
-        .then(responses => {
-          responses.forEach(response => newsList = newsList.concat(response.data.articles));
-          let counter = 0;
-          if (eventsList.length) {
-            newsList.forEach((item, index) => {
-              if (index % 5 === 0 && counter < eventsList.length) {
-                newsList.splice(index, 0, eventsList[counter]);
-                counter++
-              }
-            })
+  // axios
+  //   .get(eventsCall)
+  //   .then(response => {
+  //     const eventsResp = response.data.events;
+  //     if (eventsResp.length) {
+  //       for (let i = 0; i < eventsResp.length; i++) {
+  //         let eToPush = formatTheEvent(eventsResp[i]);
+  //         eventsList.push(eToPush);
+  //       }
+  //     }
+  Promise.all([...promises])
+    .then(responses => {
+      responses.forEach(
+        response => (newsList = newsList.concat(response.data.articles))
+      );
+      let counter = 0;
+      if (eventsList.length) {
+        newsList.forEach((item, index) => {
+          if (index % 5 === 0 && counter < eventsList.length) {
+            newsList.splice(index, 0, eventsList[counter]);
+            counter++;
           }
-          newsList = formatNews(newsList, req.user.pinnedContent);
+        });
+      }
+      newsList = formatNews(newsList, req.user.pinnedContent);
 
-          res.render('user/feed', {
-            newsList,
-            user: req.user
-          })
-        }).catch(err => {
-          console.log(err)
-        })
+      res.render("user/feed", {
+        newsList,
+        user: req.user
+      });
     })
+    .catch(err => {
+      console.log(err);
+    });
+  // })
+  // .catch(() => console.log("oi?"));
 });
 
 // pin content - not working
@@ -86,8 +93,8 @@ router.post("/pin/:itemNb", (req, res, next) => {
   const currentContent = req.user.pinnedContent;
   currentContent.push(newPinnedItem);
   User.findByIdAndUpdate(req.user._id, {
-      pinnedContent: currentContent
-    })
+    pinnedContent: currentContent
+  })
     .then(found => {})
     .catch(err => {
       next(err);
@@ -101,8 +108,8 @@ router.post("/remove/:itemNb", (req, res, next) => {
     item => item.contentId !== itemToRemove.contentId
   );
   User.findByIdAndUpdate(req.user._id, {
-      pinnedContent: currentContent
-    })
+    pinnedContent: currentContent
+  })
     .then(found => {
       // res.redirect("/user/feed");
     })
@@ -123,8 +130,8 @@ router.post("/pinned/remove/:itemNb", (req, res, next) => {
   let currentContent = req.user.pinnedContent;
   currentContent.splice(req.params.itemNb, 1);
   User.findByIdAndUpdate(req.user._id, {
-      pinnedContent: currentContent
-    })
+    pinnedContent: currentContent
+  })
     .then(found => {
       res.redirect("/user/pinned");
     })
@@ -138,15 +145,17 @@ router.post("/pinned/remove/:itemNb", (req, res, next) => {
 const formatNews = (newsListToFormat, listOfPinnedItems) => {
   newsListToFormat.forEach(item => {
     if (item) {
-      if (item.content) item.content = item.content.slice(0, item.content.length - 20) + ' ...(see more)';
+      if (item.content)
+        item.content =
+          item.content.slice(0, item.content.length - 20) + " ...(see more)";
       item.contentId = `${item.title}${item.publishedAt}`;
-      if (!item.urlToImage) item.urlToImage = '/images/default-news-pic.jpeg';
+      if (!item.urlToImage) item.urlToImage = "/images/default-news-pic.jpeg";
       item.publishedAt = item.publishedAt.slice(0, 10);
       if (checkContentId(item, listOfPinnedItems)) item.pinned = true;
     }
-  })
+  });
   return newsListToFormat;
-}
+};
 
 const checkContentId = (item, array) => {
   let idPresent = false;
@@ -159,18 +168,20 @@ const checkContentId = (item, array) => {
 const formatTheEvent = rawEventData => {
   let eToPush = {};
   eToPush.source = {
-    name: 'Event'
-  }
+    name: "Event"
+  };
   eToPush.title = rawEventData.name.text;
   eToPush.description = rawEventData.description.text;
   eToPush.url = rawEventData.url;
-  eToPush.urlToImage = (rawEventData.logo) ? rawEventData.logo.url : '/images/default-news-pic.jpeg';
-  eToPush.content = `${rawEventData.summary.slice(0,200)} ...(see more)` || '';
+  eToPush.urlToImage = rawEventData.logo
+    ? rawEventData.logo.url
+    : "/images/default-news-pic.jpeg";
+  eToPush.content = `${rawEventData.summary.slice(0, 200)} ...(see more)` || "";
   eToPush.publishedAt = rawEventData.start.local;
   eToPush.source.event = true;
-  eToPush.contentId = `${rawEventData.name.text}${rawEventData.published}`
+  eToPush.contentId = `${rawEventData.name.text}${rawEventData.published}`;
 
   return eToPush;
-}
+};
 
 module.exports = router;
