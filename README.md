@@ -1,5 +1,9 @@
 # [Fresh Mentor](https://fresh-mentor.herokuapp.com)
 
+#### Note:
+
+Ever since the launch of this application, the EventbriteAPI we were using has been discontinued, therefore that part had to be taken out of the feed. You are still free to use the application, but don't expect any events to appear in your feed
+
 Ironhack 1st Full Stack Application
 
 # Team
