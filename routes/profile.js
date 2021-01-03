@@ -7,24 +7,19 @@ const uploadCloud = require("../config/cloudinary");
 
 router.get("/", (req, res, next) => {
   res.render("profile/profile-page", {
-    user: req.user
+    user: req.user,
   });
 });
 
 router.get("/edit", (req, res, next) => {
-  console.log(req.user)
+  console.log(req.user);
   res.render("profile/edit", {
-    user: req.user
+    user: req.user,
   });
 });
 
 router.post("/edit", uploadCloud.single("imagePath"), (req, res, next) => {
-  const {
-    email,
-    level,
-    githubUrl,
-    bio
-  } = req.body;
+  const { email, level, githubUrl, bio } = req.body;
   const city = req.body.city.toLowerCase();
   const image = req.user.imagePath;
   const interests = req.body.interests || "javascript";
@@ -33,22 +28,25 @@ router.post("/edit", uploadCloud.single("imagePath"), (req, res, next) => {
   console.log("file url image: ", req.file);
   console.log("user image: ", req.user.imagePath);
 
-  User.findByIdAndUpdate({
-      _id: user
-    }, {
+  User.findByIdAndUpdate(
+    {
+      _id: user,
+    },
+    {
       email,
       city,
       level,
       githubUrl,
       interests,
       bio,
-      imagePath
-    })
-    .then(user => {
+      imagePath,
+    },
+  )
+    .then((user) => {
       //   res.redirect('/books')
       res.redirect(`/profile`); // book._id === req.params.bookId
     })
-    .catch(err => {
+    .catch((err) => {
       next(err);
     });
 });
